@@ -13,7 +13,7 @@
         <!--События-->
         <scene sceneID="3FA-b2-Zoi">
             <objects>
-                <viewController storyboardIdentifier="events" title="События" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YRy-hg-BeO" customClass="EventsViewController" customModule="queuer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="События" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YRy-hg-BeO" customClass="EventsViewController" customModule="queuer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yBf-Do-Ki7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,7 @@
         <!--О себе-->
         <scene sceneID="Oty-1p-66R">
             <objects>
-                <viewController storyboardIdentifier="info" title="О себе" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ntv-qE-3zW" customClass="UserInfoViewController" customModule="queuer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="О себе" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ntv-qE-3zW" customClass="UserInfoViewController" customModule="queuer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lTP-me-lzP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,7 +89,7 @@
         <!--События-->
         <scene sceneID="udG-Ld-ZmK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1tl-BP-Rc8" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="events" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1tl-BP-Rc8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="События" image="tab_bar-icon" selectedImage="tab_bar-icon" id="F82-CI-eN9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="dRD-8D-Tnj">
@@ -108,7 +108,7 @@
         <!--Личная информация-->
         <scene sceneID="BvN-Mn-2UH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MWy-FB-Y8F" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="info" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MWy-FB-Y8F" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Личная информация" image="tab_bar-user" selectedImage="tab_bar-user" id="S3D-6p-4kg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="c3L-Kl-Skq">

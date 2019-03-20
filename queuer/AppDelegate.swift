@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupAppearance() {
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "accent-color") ?? UIColor.black]
         UITableViewHeaderFooterView.appearance().backgroundColor = UIColor(named: "accent-color")
-        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).tintColor = UIColor(named: "accent-color")
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).tintColor = UIColor.white
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
