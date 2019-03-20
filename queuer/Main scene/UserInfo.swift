@@ -1,5 +1,5 @@
 //
-//  Groupmate.swift
+//  UserInfo.swift
 //  queuer
 //
 //  Created by Денис on 20/03/2019.
@@ -8,6 +8,8 @@
 
 import Foundation
 
-struct Groupmate {
-    
+struct UserInfo {
+    var name: String
+    var university: String
+    var group: String
 }

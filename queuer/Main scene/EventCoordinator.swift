@@ -52,10 +52,10 @@ class EventCoordinator: Coordinator {
     }
 
     func showNewEvent() {
-        print("11")
+        
     }
 
     func didLogout() {
-        print("22")
+         
     }
 }

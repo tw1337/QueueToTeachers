@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func prepareChildCoordinators(_ childCoordinatorMaker: CoordinatorMaker) -> [Coordinator] {
-        let isLoggedIn = false
+        let isLoggedIn = true
         var toCreate = [CoordinatorType.event]
         if !isLoggedIn {
             toCreate.append(.login)
@@ -42,8 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupAppearance() {
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "accent-color") ?? UIColor.black]
-        UITableViewHeaderFooterView.appearance().backgroundColor = UIColor(named: "accent-color")
-        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).tintColor = UIColor.white
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).textColor = UIColor.white
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

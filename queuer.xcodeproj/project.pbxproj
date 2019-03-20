@@ -17,6 +17,7 @@
 		92773D9F2240003400CFAE44 /* LoginField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92773D9E2240003400CFAE44 /* LoginField.xib */; };
 		92773DA12240004900CFAE44 /* LoginField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92773DA02240004900CFAE44 /* LoginField.swift */; };
 		92773DA32240019D00CFAE44 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92773DA22240019D00CFAE44 /* DesignableView.swift */; };
+		928999D722429DD100A722AD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999D622429DD100A722AD /* UserInfo.swift */; };
 		92DDB48F22402AAF00CC9FF6 /* LoginViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB48E22402AAF00CC9FF6 /* LoginViewBuilder.swift */; };
 		92DDB4912240E49100CC9FF6 /* LoginViewGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB4902240E49100CC9FF6 /* LoginViewGenerator.swift */; };
 		92DDB49422413A4200CC9FF6 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49322413A4200CC9FF6 /* EventsViewController.swift */; };
@@ -59,6 +60,7 @@
 		92773D9E2240003400CFAE44 /* LoginField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginField.xib; sourceTree = "<group>"; };
 		92773DA02240004900CFAE44 /* LoginField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginField.swift; sourceTree = "<group>"; };
 		92773DA22240019D00CFAE44 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		928999D622429DD100A722AD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		92DDB48E22402AAF00CC9FF6 /* LoginViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewBuilder.swift; sourceTree = "<group>"; };
 		92DDB4902240E49100CC9FF6 /* LoginViewGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewGenerator.swift; sourceTree = "<group>"; };
 		92DDB49322413A4200CC9FF6 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +124,6 @@
 				92DDB49222413A2300CC9FF6 /* Login scene */,
 				92DDB49522413B2F00CC9FF6 /* Main scene */,
 				92773D83223FF7B700CFAE44 /* Assets.xcassets */,
-				92DDB4A22242620200CC9FF6 /* Groupmate.swift */,
 				92773D85223FF7B700CFAE44 /* LaunchScreen.storyboard */,
 				92773D88223FF7B700CFAE44 /* Info.plist */,
 				92EFBD9A22400B7D004193D3 /* Components */,
@@ -159,6 +160,8 @@
 				92DDB49322413A4200CC9FF6 /* EventsViewController.swift */,
 				92DDB49E2242285800CC9FF6 /* UserInfoViewController.swift */,
 				92DDB49C224227BE00CC9FF6 /* Events.storyboard */,
+				92DDB4A22242620200CC9FF6 /* Groupmate.swift */,
+				928999D622429DD100A722AD /* UserInfo.swift */,
 			);
 			path = "Main scene";
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				92DDB4912240E49100CC9FF6 /* LoginViewGenerator.swift in Sources */,
 				92773DA32240019D00CFAE44 /* DesignableView.swift in Sources */,
 				92EFBD9822400AF8004193D3 /* UIView+nib.swift in Sources */,
+				928999D722429DD100A722AD /* UserInfo.swift in Sources */,
 				92EFBD9622400AA4004193D3 /* UIViewController+Storyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
