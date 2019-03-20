@@ -26,6 +26,7 @@
 		92DDB49D224227BE00CC9FF6 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DDB49C224227BE00CC9FF6 /* Events.storyboard */; };
 		92DDB49F2242285800CC9FF6 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49E2242285800CC9FF6 /* UserInfoViewController.swift */; };
 		92DDB4A32242620200CC9FF6 /* Groupmate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB4A22242620200CC9FF6 /* Groupmate.swift */; };
+		92DDB4A5224279E300CC9FF6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 92DDB4A4224279E300CC9FF6 /* .gitignore */; };
 		92EFBD9622400AA4004193D3 /* UIViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EFBD9522400AA4004193D3 /* UIViewController+Storyboard.swift */; };
 		92EFBD9822400AF8004193D3 /* UIView+nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EFBD9722400AF8004193D3 /* UIView+nib.swift */; };
 		92EFBD9C22401162004193D3 /* LoginButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92EFBD9B22401162004193D3 /* LoginButton.xib */; };
@@ -67,6 +68,7 @@
 		92DDB49C224227BE00CC9FF6 /* Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
 		92DDB49E2242285800CC9FF6 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		92DDB4A22242620200CC9FF6 /* Groupmate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groupmate.swift; sourceTree = "<group>"; };
+		92DDB4A4224279E300CC9FF6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		92EFBD9522400AA4004193D3 /* UIViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboard.swift"; sourceTree = "<group>"; };
 		92EFBD9722400AF8004193D3 /* UIView+nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+nib.swift"; sourceTree = "<group>"; };
 		92EFBD9B22401162004193D3 /* LoginButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginButton.xib; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		92773D70223FF7B400CFAE44 = {
 			isa = PBXGroup;
 			children = (
+				92DDB4A4224279E300CC9FF6 /* .gitignore */,
 				92773D7B223FF7B500CFAE44 /* queuer */,
 				92773D90223FF7B700CFAE44 /* queuerTests */,
 				92773D7A223FF7B500CFAE44 /* Products */,
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92DDB49D224227BE00CC9FF6 /* Events.storyboard in Resources */,
+				92DDB4A5224279E300CC9FF6 /* .gitignore in Resources */,
 				92773D9F2240003400CFAE44 /* LoginField.xib in Resources */,
 				92EFBD9C22401162004193D3 /* LoginButton.xib in Resources */,
 				92773D87223FF7B700CFAE44 /* LaunchScreen.storyboard in Resources */,

@@ -34,6 +34,6 @@ class MainCoordinator: Coordinator {
     func showNext() {
         var childCoordinator = childCoordinators?.popLast()
         childCoordinator?.completenceCallback = showNext
-        childCoordinator?.start()
+        childCoordinator?.start() 
     }
 }
