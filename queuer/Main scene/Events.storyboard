@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--События-->
+        <scene sceneID="3FA-b2-Zoi">
+            <objects>
+                <viewController storyboardIdentifier="events" title="События" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YRy-hg-BeO" customClass="EventsViewController" customModule="queuer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yBf-Do-Ki7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5VW-7D-Xhd">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zgs-vd-fSC" firstAttribute="bottom" secondItem="5VW-7D-Xhd" secondAttribute="bottom" id="OcD-nk-ebL"/>
+                            <constraint firstItem="Zgs-vd-fSC" firstAttribute="trailing" secondItem="5VW-7D-Xhd" secondAttribute="trailing" id="XjW-ZR-CyN"/>
+                            <constraint firstItem="5VW-7D-Xhd" firstAttribute="top" secondItem="Zgs-vd-fSC" secondAttribute="top" id="njT-ac-Vt6"/>
+                            <constraint firstItem="5VW-7D-Xhd" firstAttribute="leading" secondItem="Zgs-vd-fSC" secondAttribute="leading" id="v2D-DB-IBi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zgs-vd-fSC"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="События" id="j1p-aN-Hg4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mbw-eF-37e">
+                            <connections>
+                                <action selector="didPlusTap:" destination="YRy-hg-BeO" id="p8b-PV-U4q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="5VW-7D-Xhd" id="I3j-Lh-hMX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a1y-uZ-auw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1892" y="-407.14285714285717"/>
+        </scene>
+        <!--О себе-->
+        <scene sceneID="Oty-1p-66R">
+            <objects>
+                <viewController storyboardIdentifier="info" title="О себе" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ntv-qE-3zW" customClass="UserInfoViewController" customModule="queuer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lTP-me-lzP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AKi-Yy-r62">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="51v-1l-5he" firstAttribute="trailing" secondItem="AKi-Yy-r62" secondAttribute="trailing" id="EW0-vZ-mw1"/>
+                            <constraint firstItem="AKi-Yy-r62" firstAttribute="top" secondItem="51v-1l-5he" secondAttribute="top" id="Lnw-4L-YHE"/>
+                            <constraint firstItem="51v-1l-5he" firstAttribute="bottom" secondItem="AKi-Yy-r62" secondAttribute="bottom" id="n25-9u-YQa"/>
+                            <constraint firstItem="AKi-Yy-r62" firstAttribute="leading" secondItem="51v-1l-5he" secondAttribute="leading" id="vt2-4M-rbl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="51v-1l-5he"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="О себе" id="hbT-Lp-VTj">
+                        <barButtonItem key="rightBarButtonItem" title="Выйти" id="8pA-kE-S1Y">
+                            <connections>
+                                <action selector="didTapLogout:" destination="Ntv-qE-3zW" id="JPK-HR-NDs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="AKi-Yy-r62" id="KWq-Ca-RYi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKd-ID-2Ai" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1892" y="330.29556650246309"/>
+        </scene>
+        <!--События-->
+        <scene sceneID="udG-Ld-ZmK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1tl-BP-Rc8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="События" image="tab_bar-icon" selectedImage="tab_bar-icon" id="F82-CI-eN9"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="dRD-8D-Tnj">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YRy-hg-BeO" kind="relationship" relationship="rootViewController" id="PTI-aS-eev"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="01y-3d-YeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="949.60000000000002" y="-407.14285714285717"/>
+        </scene>
+        <!--Личная информация-->
+        <scene sceneID="BvN-Mn-2UH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MWy-FB-Y8F" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Личная информация" image="tab_bar-user" selectedImage="tab_bar-user" id="S3D-6p-4kg"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="c3L-Kl-Skq">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ntv-qE-3zW" kind="relationship" relationship="rootViewController" id="B3y-DJ-3hY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LUc-Va-OHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="949.60000000000002" y="330.29556650246309"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tab_bar-icon" width="25" height="25"/>
+        <image name="tab_bar-user" width="30" height="30"/>
+    </resources>
+</document>

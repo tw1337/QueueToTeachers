@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="queuer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qa-kU-kd7">
+                                <rect key="frame" x="26" y="58" width="68" height="29"/>
+                                <state key="normal" image="back-white"/>
+                                <connections>
+                                    <action selector="didBackTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kwf-gG-RcZ"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wU2-HB-Ies">
+                                <rect key="frame" x="37.666666666666657" y="44" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wU2-HB-Ies" secondAttribute="height" multiplier="1:1" id="czn-1p-8FT"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ЗАГОЛОВОК" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npX-hY-o7B">
+                                <rect key="frame" x="136" y="342" width="102" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RGO-Ei-Wqw">
+                                <rect key="frame" x="37.666666666666657" y="444" width="300" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="OJD-Mp-BbV"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ukR-Cs-TjG">
+                                <rect key="frame" x="76.666666666666686" y="584" width="222" height="39.333333333333371"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НЕТ АККАУНТА?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8j-nI-etA">
+                                        <rect key="frame" x="65.999999999999972" y="0.0" width="89.666666666666657" height="13.333333333333334"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVj-8w-aan">
+                                        <rect key="frame" x="0.0" y="13.333333333333314" width="222" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="ЗАРЕГИСТРИРОВАТЬСЯ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didRegisterTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cNN-Ih-ipg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XVj-8w-aan" firstAttribute="width" secondItem="ukR-Cs-TjG" secondAttribute="width" multiplier="0.5" constant="111" id="nwq-R7-m8U"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CFk-GC-jqg" customClass="LoginButton" customModule="queuer" customModuleProvider="target">
+                                <rect key="frame" x="67" y="650" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="NTU-V6-mxl"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="ВХОД"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CFk-GC-jqg" secondAttribute="bottom" id="3ki-gp-8s6"/>
+                            <constraint firstItem="npX-hY-o7B" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="5K5-ov-GTe"/>
+                            <constraint firstItem="wU2-HB-Ies" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6CZ-kN-zHg"/>
+                            <constraint firstItem="wU2-HB-Ies" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="6ve-EC-i8y"/>
+                            <constraint firstItem="npX-hY-o7B" firstAttribute="top" secondItem="wU2-HB-Ies" secondAttribute="bottom" constant="-2" id="CKv-hK-N8I"/>
+                            <constraint firstItem="npX-hY-o7B" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="DIB-7T-Nr9"/>
+                            <constraint firstItem="0Qa-kU-kd7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="EBI-3R-OCW"/>
+                            <constraint firstItem="0Qa-kU-kd7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="J3D-Fy-WZe"/>
+                            <constraint firstItem="ukR-Cs-TjG" firstAttribute="top" secondItem="RGO-Ei-Wqw" secondAttribute="bottom" constant="15" id="Tyo-m7-bcG"/>
+                            <constraint firstItem="wU2-HB-Ies" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Vxb-C1-gVy"/>
+                            <constraint firstItem="RGO-Ei-Wqw" firstAttribute="top" secondItem="npX-hY-o7B" secondAttribute="bottom" constant="30" id="Xf8-O1-N3f"/>
+                            <constraint firstItem="RGO-Ei-Wqw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="YsL-xv-Z2N"/>
+                            <constraint firstItem="ukR-Cs-TjG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bhl-MP-Yr7"/>
+                            <constraint firstItem="CFk-GC-jqg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lQI-K9-pd8"/>
+                            <constraint firstItem="CFk-GC-jqg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="nii-2v-K8z"/>
+                            <constraint firstItem="RGO-Ei-Wqw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="qId-W2-vwI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Hy3-uJ-32w" appends="YES" id="qoA-Vv-U4J"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="CFk-GC-jqg" id="hgA-vu-A8m"/>
+                        <outlet property="backButton" destination="0Qa-kU-kd7" id="PpQ-mS-hV6"/>
+                        <outlet property="fieldStack" destination="RGO-Ei-Wqw" id="5lN-q4-dDR"/>
+                        <outlet property="imageView" destination="wU2-HB-Ies" id="v4e-hu-lWU"/>
+                        <outlet property="imageWidth" destination="6ve-EC-i8y" id="utl-XQ-dn9"/>
+                        <outlet property="registerInfoStack" destination="ukR-Cs-TjG" id="hYA-Ru-lWc"/>
+                        <outlet property="stackHeight" destination="OJD-Mp-BbV" id="4ce-He-n88"/>
+                        <outlet property="titleLabel" destination="npX-hY-o7B" id="lVr-y2-seR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Hy3-uJ-32w">
+                    <connections>
+                        <action selector="didTap:" destination="BYZ-38-t0r" id="5eE-0i-wdZ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="61.600000000000001" y="22.906403940886701"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back-white" width="14" height="29"/>
+        <image name="login-icon" width="283" height="283"/>
+    </resources>
+</document>
