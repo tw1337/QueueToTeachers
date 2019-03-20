@@ -58,4 +58,8 @@ class EventCoordinator: Coordinator {
     func didLogout() {
          
     }
+    
+    func didSelected(section: UserInfoViewController.UserSections) {
+        
+    }
 }

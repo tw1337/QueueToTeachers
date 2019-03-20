@@ -18,6 +18,14 @@
 		92773DA12240004900CFAE44 /* LoginField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92773DA02240004900CFAE44 /* LoginField.swift */; };
 		92773DA32240019D00CFAE44 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92773DA22240019D00CFAE44 /* DesignableView.swift */; };
 		928999D722429DD100A722AD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999D622429DD100A722AD /* UserInfo.swift */; };
+		928999DA2242BD8500A722AD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999D92242BD8500A722AD /* Event.swift */; };
+		928999DD2242C11800A722AD /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999DB2242C11800A722AD /* NewTableViewCell.swift */; };
+		928999DE2242C11800A722AD /* NewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928999DC2242C11800A722AD /* NewTableViewCell.xib */; };
+		928999E32242C14C00A722AD /* AvailableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999E12242C14C00A722AD /* AvailableTableViewCell.swift */; };
+		928999E42242C14C00A722AD /* AvailableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928999E22242C14C00A722AD /* AvailableTableViewCell.xib */; };
+		928999E72242C16E00A722AD /* CheckedInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999E52242C16E00A722AD /* CheckedInTableViewCell.swift */; };
+		928999E82242C16E00A722AD /* CheckedInTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928999E62242C16E00A722AD /* CheckedInTableViewCell.xib */; };
+		928999EB2242C3F100A722AD /* TableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999EA2242C3F100A722AD /* TableView+Register.swift */; };
 		92DDB48F22402AAF00CC9FF6 /* LoginViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB48E22402AAF00CC9FF6 /* LoginViewBuilder.swift */; };
 		92DDB4912240E49100CC9FF6 /* LoginViewGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB4902240E49100CC9FF6 /* LoginViewGenerator.swift */; };
 		92DDB49422413A4200CC9FF6 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49322413A4200CC9FF6 /* EventsViewController.swift */; };
@@ -61,6 +69,14 @@
 		92773DA02240004900CFAE44 /* LoginField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginField.swift; sourceTree = "<group>"; };
 		92773DA22240019D00CFAE44 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		928999D622429DD100A722AD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		928999D92242BD8500A722AD /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		928999DB2242C11800A722AD /* NewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
+		928999DC2242C11800A722AD /* NewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewTableViewCell.xib; sourceTree = "<group>"; };
+		928999E12242C14C00A722AD /* AvailableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableTableViewCell.swift; sourceTree = "<group>"; };
+		928999E22242C14C00A722AD /* AvailableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvailableTableViewCell.xib; sourceTree = "<group>"; };
+		928999E52242C16E00A722AD /* CheckedInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckedInTableViewCell.swift; sourceTree = "<group>"; };
+		928999E62242C16E00A722AD /* CheckedInTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckedInTableViewCell.xib; sourceTree = "<group>"; };
+		928999EA2242C3F100A722AD /* TableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Register.swift"; sourceTree = "<group>"; };
 		92DDB48E22402AAF00CC9FF6 /* LoginViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewBuilder.swift; sourceTree = "<group>"; };
 		92DDB4902240E49100CC9FF6 /* LoginViewGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewGenerator.swift; sourceTree = "<group>"; };
 		92DDB49322413A4200CC9FF6 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +138,7 @@
 				92DDB49822421ABA00CC9FF6 /* MainCoordinator.swift */,
 				92DDB49A22421E2D00CC9FF6 /* CoordinatorUtil.swift */,
 				92DDB49222413A2300CC9FF6 /* Login scene */,
+				928999D82242BD6F00A722AD /* Models */,
 				92DDB49522413B2F00CC9FF6 /* Main scene */,
 				92773D83223FF7B700CFAE44 /* Assets.xcassets */,
 				92773D85223FF7B700CFAE44 /* LaunchScreen.storyboard */,
@@ -139,6 +156,29 @@
 				92773D93223FF7B700CFAE44 /* Info.plist */,
 			);
 			path = queuerTests;
+			sourceTree = "<group>";
+		};
+		928999D82242BD6F00A722AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				92DDB4A22242620200CC9FF6 /* Groupmate.swift */,
+				928999D622429DD100A722AD /* UserInfo.swift */,
+				928999D92242BD8500A722AD /* Event.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		928999E92242C17600A722AD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				928999DB2242C11800A722AD /* NewTableViewCell.swift */,
+				928999DC2242C11800A722AD /* NewTableViewCell.xib */,
+				928999E12242C14C00A722AD /* AvailableTableViewCell.swift */,
+				928999E22242C14C00A722AD /* AvailableTableViewCell.xib */,
+				928999E52242C16E00A722AD /* CheckedInTableViewCell.swift */,
+				928999E62242C16E00A722AD /* CheckedInTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		92DDB49222413A2300CC9FF6 /* Login scene */ = {
@@ -160,8 +200,7 @@
 				92DDB49322413A4200CC9FF6 /* EventsViewController.swift */,
 				92DDB49E2242285800CC9FF6 /* UserInfoViewController.swift */,
 				92DDB49C224227BE00CC9FF6 /* Events.storyboard */,
-				92DDB4A22242620200CC9FF6 /* Groupmate.swift */,
-				928999D622429DD100A722AD /* UserInfo.swift */,
+				928999E92242C17600A722AD /* Cells */,
 			);
 			path = "Main scene";
 			sourceTree = "<group>";
@@ -173,6 +212,7 @@
 				92EFBD9522400AA4004193D3 /* UIViewController+Storyboard.swift */,
 				92EFBD9722400AF8004193D3 /* UIView+nib.swift */,
 				92EFBD9F22401726004193D3 /* Colors.swift */,
+				928999EA2242C3F100A722AD /* TableView+Register.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -270,9 +310,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				92DDB49D224227BE00CC9FF6 /* Events.storyboard in Resources */,
+				928999E42242C14C00A722AD /* AvailableTableViewCell.xib in Resources */,
 				92DDB4A5224279E300CC9FF6 /* .gitignore in Resources */,
+				928999DE2242C11800A722AD /* NewTableViewCell.xib in Resources */,
 				92773D9F2240003400CFAE44 /* LoginField.xib in Resources */,
 				92EFBD9C22401162004193D3 /* LoginButton.xib in Resources */,
+				928999E82242C16E00A722AD /* CheckedInTableViewCell.xib in Resources */,
 				92773D87223FF7B700CFAE44 /* LaunchScreen.storyboard in Resources */,
 				92773D84223FF7B700CFAE44 /* Assets.xcassets in Resources */,
 				92773D82223FF7B500CFAE44 /* LoginViewController.storyboard in Resources */,
@@ -295,10 +338,14 @@
 			files = (
 				92DDB48F22402AAF00CC9FF6 /* LoginViewBuilder.swift in Sources */,
 				92DDB49F2242285800CC9FF6 /* UserInfoViewController.swift in Sources */,
+				928999EB2242C3F100A722AD /* TableView+Register.swift in Sources */,
 				92DDB49922421ABA00CC9FF6 /* MainCoordinator.swift in Sources */,
 				92773DA12240004900CFAE44 /* LoginField.swift in Sources */,
 				92EFBDA022401726004193D3 /* Colors.swift in Sources */,
+				928999E32242C14C00A722AD /* AvailableTableViewCell.swift in Sources */,
 				92EFBD9E2240118C004193D3 /* LoginButton.swift in Sources */,
+				928999DD2242C11800A722AD /* NewTableViewCell.swift in Sources */,
+				928999DA2242BD8500A722AD /* Event.swift in Sources */,
 				92773D7F223FF7B500CFAE44 /* LoginViewController.swift in Sources */,
 				92DDB49B22421E2D00CC9FF6 /* CoordinatorUtil.swift in Sources */,
 				92DDB49422413A4200CC9FF6 /* EventsViewController.swift in Sources */,
@@ -306,6 +353,7 @@
 				92773D7D223FF7B500CFAE44 /* AppDelegate.swift in Sources */,
 				92DDB4A32242620200CC9FF6 /* Groupmate.swift in Sources */,
 				92773D9D223FFBEE00CFAE44 /* LoginCoordinator.swift in Sources */,
+				928999E72242C16E00A722AD /* CheckedInTableViewCell.swift in Sources */,
 				92DDB4912240E49100CC9FF6 /* LoginViewGenerator.swift in Sources */,
 				92773DA32240019D00CFAE44 /* DesignableView.swift in Sources */,
 				92EFBD9822400AF8004193D3 /* UIView+nib.swift in Sources */,

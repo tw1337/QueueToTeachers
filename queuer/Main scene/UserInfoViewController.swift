@@ -14,7 +14,7 @@ class UserInfoViewController: UIViewController {
     var info: UserInfo?
 
     @IBOutlet var tableView: UITableView!
-
+    var userInfoSelectedCallback: (UserSections -> Void)?
     var logoutCallback: (() -> Void)?
 
     @IBAction func didTapLogout(_ sender: Any) {
@@ -32,6 +32,11 @@ class UserInfoViewController: UIViewController {
 }
 
 extension UserInfoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        userInfoSelectedCallback?(UserSections(rawValue: indexPath.row)!)
+    }
+    
 }
 
 extension UserInfoViewController: UITableViewDataSource {
@@ -59,13 +64,13 @@ extension UserInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch UserInfoSections(rawValue: indexPath.section)! {
         case .general:
-            return getUserInfoCell(at: tableView, for: indexPath)
+            return getUserInfoCell(in: tableView, for: indexPath)
         case .groupmates:
-            return getGroupmateCell(at: tableView, for: indexPath)
+            return getGroupmateCell(in: tableView, for: indexPath)
         }
     }
     
-    func getUserInfoCell(at tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+    func getUserInfoCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         if cell == nil {
             cell = UITableViewCell(style: .value1, reuseIdentifier: "Cell")
@@ -88,7 +93,7 @@ extension UserInfoViewController: UITableViewDataSource {
         }
     }
     
-    func getGroupmateCell(at tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+    func getGroupmateCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "1")
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "1")
