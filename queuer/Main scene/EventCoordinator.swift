@@ -24,25 +24,27 @@ class EventCoordinator: Coordinator {
         showTabBar()
     }
 
-    fileprivate func instantiateEventsViewController(_ storyboard: UIStoryboard) -> UIViewController {
-        let viewController = storyboard.instantiateViewController(withIdentifier: "events")
-        if let eventsVC = viewController as? EventsViewController {
-            viewController?.plusCallback = {
-                self.showNewEvent()
-            }
+    fileprivate func instantiateEventsViewController(_ storyboard: UIStoryboard) -> UINavigationController {
+        let navController = storyboard.instantiateViewController(withIdentifier: "events") as? UINavigationController
+        guard let eventsVC = navController?.viewControllers.first as? EventsViewController else { return UINavigationController() }
+        eventsVC.plusCallback = {
+            self.showNewEvent()
         }
-        return viewController
+        return navController!
     }
 
-    fileprivate func instantiateUserInfoViewController(_ storyboard: UIStoryboard) -> UIViewController {
-        let viewController = storyboard.instantiateViewController(withIdentifier: "info")
-        return viewController
+    fileprivate func instantiateUserInfoViewController(_ storyboard: UIStoryboard) -> UINavigationController {
+        let navController = storyboard.instantiateViewController(withIdentifier: "info") as? UINavigationController
+        guard let infoVC = navController?.viewControllers.first as? UserInfoViewController else { return UINavigationController() }
+        infoVC.logoutCallback = {
+            self.didLogout()
+        }
+        return navController!
     }
 
     func showTabBar() {
         let storyboard = UIStoryboard(name: "Events", bundle: nil)
         let eventsViewController = instantiateEventsViewController(storyboard)
-
         let userInfoViewController = instantiateUserInfoViewController(storyboard)
         let tabBar = UITabBarController()
         tabBar.viewControllers = [eventsViewController, userInfoViewController]
@@ -51,5 +53,9 @@ class EventCoordinator: Coordinator {
 
     func showNewEvent() {
         print("11")
+    }
+
+    func didLogout() {
+        print("22")
     }
 }
