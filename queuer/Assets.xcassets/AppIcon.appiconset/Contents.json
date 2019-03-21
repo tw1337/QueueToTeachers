@@ -86,19 +86,19 @@
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "icon-ios-76@2x.jpg",
+      "filename" : "icon-ios-76@2x-1.jpg",
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "icon-ios-83@2x.jpg",
+      "filename" : "icon-ios-83@2x-1.jpg",
       "scale" : "2x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "icon-ios-1024@1x.jpg",
+      "filename" : "icon-ios-1024@1x-1.jpg",
       "scale" : "1x"
     }
   ],

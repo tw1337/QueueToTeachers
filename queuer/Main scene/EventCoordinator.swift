@@ -27,7 +27,7 @@ class EventCoordinator: Coordinator {
     fileprivate func instantiateEventsViewController(_ storyboard: UIStoryboard) -> UINavigationController {
         let navController = storyboard.instantiateViewController(withIdentifier: "events") as? UINavigationController
         guard let eventsVC = navController?.viewControllers.first as? EventsViewController else { return UINavigationController() }
-        eventsVC.plusCallback = showNewEvent
+        eventsVC.plusCallback = createNewEvent
         eventsVC.selectedCallback = didSelected
         return navController!
     }
@@ -49,7 +49,7 @@ class EventCoordinator: Coordinator {
         navigationController.setViewControllers([tabBar], animated: true)
     }
 
-    func showNewEvent() {
+    func createNewEvent() {
         
     }
 

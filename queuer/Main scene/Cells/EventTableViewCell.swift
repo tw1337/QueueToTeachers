@@ -19,7 +19,10 @@ class EventTableViewCell: UITableViewCell, DateObserver {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
 
-    var dateCounter: DateCounter?
+    var needsUpdate = false
+    var indexPath: IndexPath!
+    var dateCounter: DateCounter? 
+    var buttonCallback: (() -> Void)?
 
     var date: Date? {
         didSet {
@@ -27,7 +30,7 @@ class EventTableViewCell: UITableViewCell, DateObserver {
             dateCounter!.observer = self
         }
     }
-    
+
     var event: Event? {
         didSet {
             date = event?.date
@@ -43,19 +46,31 @@ class EventTableViewCell: UITableViewCell, DateObserver {
             timeLabel.text = positionString
         }
     }
-    
+
     var positionString: String {
         return String(event?.position ?? 0) + "й"
     }
 
     func didUpdate() {
-        timeLabel.text = dateCounter?.text
+        if type == .new {
+            needsUpdate = dateCounter?.date.isExpired ?? false
+            timeLabel.text = dateCounter?.text
+            if needsUpdate {
+                type = .available
+            }
+        }
     }
 
-    var type: EventsViewController.EventTableSections? {
+    var type: EventType? {
         didSet {
-            actionButton.isHidden = type != .available
+            actionButton.alpha = type != .available ? 0 : 1
+            timeLabel.alpha = type != .available ? 1 : 0
+            update()
         }
+    }
+    
+    override func prepareForReuse() {
+        needsUpdate = false
     }
 
     override func awakeFromNib() {
@@ -72,5 +87,8 @@ class EventTableViewCell: UITableViewCell, DateObserver {
     }
 
     @IBAction func didButtonTap(_ sender: Any) {
+        needsUpdate = true
+        type = .checkedIn
+        buttonCallback?()
     }
 }

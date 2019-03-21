@@ -9,32 +9,69 @@
 import Foundation
 import UIKit
 
+extension Notification.Name {
+    public static let invalidated = Notification.Name(rawValue: "invalidated")
+}
+
 class EventsViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
 
     var plusCallback: (() -> Void)?
     var selectedCallback: ((Event, EventType) -> Void)?
-    var dateCounters = [DateCounter]()
     var newEvents: [Event]?
     var availableEvents: [Event]?
     var checkedInEvents: [Event]?
+
     var timer: Timer?
     @IBAction func didPlusTap(_ sender: Any) {
         plusCallback?()
     }
 
     override func viewDidLoad() {
-        newEvents = [Event(name: "aa", date: Date(timeIntervalSinceNow: 100))]
+        newEvents = [Event(name: "aa", date: Date(timeIntervalSinceNow: 5)),
+                     Event(name: "aa", date: Date(timeIntervalSinceNow: 5)),
+                     Event(name: "aa", date: Date(timeIntervalSinceNow: 15)),
+                     Event(name: "aa", date: Date(timeIntervalSinceNow: 5))]
         availableEvents = [Event(name: "123", date: Date(timeIntervalSinceNow: -1 * 24 * 7 * 1000))]
         checkedInEvents = [Event(name: "111111", date: Date(timeIntervalSinceNow: -13 * 10000))]
         tableView.delegate = self
         tableView.dataSource = self
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCells), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer!, forMode: RunLoop.Mode.common)
         tableView.register(EventTableViewCell.self)
+        NotificationCenter.default.addObserver(self, selector: #selector(didInvalidated), name: .invalidated, object: nil)
     }
 
     @objc func updateCells() {
         tableView.visibleCells.forEach { ($0 as! EventTableViewCell).update() }
+    }
+
+    @objc func didInvalidated() {
+        moveOutdated()
+        moveChecked()
+    }
+
+    private func moveChecked() {
+        let toMove = tableView.visibleCells
+            .compactMap { $0 as? EventTableViewCell }
+            .filter { $0.indexPath.section == 1 && $0.needsUpdate }.first
+        guard let cellToMove = toMove else { return }
+        let index = cellToMove.indexPath.row
+        let eventToMove = availableEvents![index]
+        checkedInEvents!.append(eventToMove)
+        availableEvents!.remove(at: index)
+        let newIndexPath = IndexPath(row: 0, section: 2)
+        tableView.moveRow(at: cellToMove.indexPath, to: newIndexPath)
+        cellToMove.needsUpdate = false
+    }
+
+    private func moveOutdated() {
+        while let indexToMove = newEvents?.firstIndex(where: { $0.date.isExpired }) {
+            let elementToMove = newEvents![indexToMove]
+            newEvents?.remove(at: indexToMove)
+            availableEvents?.append(elementToMove)
+            tableView.moveRow(at: IndexPath(row: indexToMove, section: 0), to: IndexPath(row: availableEvents!.count - 1, section: 1))
+        }
     }
 }
 
@@ -67,26 +104,23 @@ extension EventsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var out: Int?
-        switch EventType(rawValue: section)! {
-        case .new:
-            out = newEvents?.count
-        case .available:
-            out = availableEvents?.count
-        case .checkedIn:
-            out = checkedInEvents?.count
-        }
-        return out ?? 0
+        return getEvents(section)?.count ?? 0 - 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableViewCell", for: indexPath)
         guard let eventCell = cell as? EventTableViewCell else { return cell }
+        setupCell(indexPath, eventCell)
+        return eventCell
+    }
+
+    private func setupCell(_ indexPath: IndexPath, _ eventCell: EventTableViewCell) {
         eventCell.type = EventType(rawValue: indexPath.section)
         let event = getEvent(indexPath)!
         eventCell.event = event
+        eventCell.indexPath = indexPath
+        eventCell.buttonCallback = didInvalidated
         eventCell.update()
-        return eventCell
     }
 
     func getEvents(_ section: Int) -> [Event]? {
