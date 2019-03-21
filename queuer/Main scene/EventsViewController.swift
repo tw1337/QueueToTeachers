@@ -13,25 +13,34 @@ class EventsViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
 
     var plusCallback: (() -> Void)?
-
+    var dateCounters = [DateCounter]()
     var newEvents: [Event]?
     var availableEvents: [Event]?
     var checkedInEvents: [Event]?
-
+    var timer: Timer?
     @IBAction func didPlusTap(_ sender: Any) {
         plusCallback?()
     }
 
     override func viewDidLoad() {
-        newEvents = [Event(name: "aa", date: Date())]
-        availableEvents = [Event(name: "123", date: Date(timeIntervalSince1970: 0.4))]
-        checkedInEvents = [Event(name: "111111", date: Date(timeIntervalSinceReferenceDate: 0))]
+        newEvents = [Event(name: "aa", date: Date(timeIntervalSinceNow: 100))]
+        availableEvents = [Event(name: "123", date: Date(timeIntervalSinceNow: -1 * 24 * 7 * 1000))]
+        checkedInEvents = [Event(name: "111111", date: Date(timeIntervalSinceNow: -13 * 10000))]
         tableView.delegate = self
         tableView.dataSource = self
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCells), userInfo: nil, repeats: true)
+        tableView.register(EventTableViewCell.self)
+    }
+    
+    @objc func updateCells(){
+        tableView.visibleCells.forEach { ($0 as! EventTableViewCell).update() }
     }
 }
 
 extension EventsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension EventsViewController: UITableViewDataSource {
@@ -70,23 +79,28 @@ extension EventsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch EventTableSections(rawValue: indexPath.section)! {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableViewCell", for: indexPath)
+        guard let eventCell = cell as? EventTableViewCell else { return cell }
+        eventCell.type = EventTableSections(rawValue: indexPath.section)
+        let event = getEvent(indexPath)!
+        eventCell.event = event
+        eventCell.update()
+        return eventCell
+    }
+
+    func getEvents(_ section: Int) -> [Event]? {
+        switch EventTableSections(rawValue: section)! {
         case .new:
-            return getNewCell(in: tableView, for: indexPath)
+            return newEvents
         case .available:
-            return getAvailableCell(in: tableView, for: indexPath)
+            return availableEvents
         case .checkedIn:
-            return getCheckedInCell(in: tableView, for: indexPath)
+            return checkedInEvents
         }
     }
 
-    func getNewCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
-    }
-
-    func getAvailableCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
-    }
-
-    func getCheckedInCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+    func getEvent(_ indexPath: IndexPath) -> Event? {
+        return getEvents(indexPath.section)?[indexPath.row]
     }
 
     enum EventTableSections: Int {

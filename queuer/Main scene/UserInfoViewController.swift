@@ -14,7 +14,7 @@ class UserInfoViewController: UIViewController {
     var info: UserInfo?
 
     @IBOutlet var tableView: UITableView!
-    var userInfoSelectedCallback: (UserSections -> Void)?
+    var userInfoSelectedCallback: ((UserSections) -> Void)?
     var logoutCallback: (() -> Void)?
 
     @IBAction func didTapLogout(_ sender: Any) {

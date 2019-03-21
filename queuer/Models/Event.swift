@@ -11,4 +11,17 @@ import Foundation
 struct Event {
     var name: String
     var date: Date
+    var position: Int?
+
+    init(name: String, date: Date) {
+        self.name = name
+        self.date = date
+    }
+
+    var readableDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy в HH:mm"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        return dateFormatter.string(from: date)
+    }
 }
