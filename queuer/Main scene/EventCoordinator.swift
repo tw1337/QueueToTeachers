@@ -27,18 +27,16 @@ class EventCoordinator: Coordinator {
     fileprivate func instantiateEventsViewController(_ storyboard: UIStoryboard) -> UINavigationController {
         let navController = storyboard.instantiateViewController(withIdentifier: "events") as? UINavigationController
         guard let eventsVC = navController?.viewControllers.first as? EventsViewController else { return UINavigationController() }
-        eventsVC.plusCallback = {
-            self.showNewEvent()
-        }
+        eventsVC.plusCallback = showNewEvent
+        eventsVC.selectedCallback = didSelected
         return navController!
     }
 
     fileprivate func instantiateUserInfoViewController(_ storyboard: UIStoryboard) -> UINavigationController {
         let navController = storyboard.instantiateViewController(withIdentifier: "info") as? UINavigationController
         guard let infoVC = navController?.viewControllers.first as? UserInfoViewController else { return UINavigationController() }
-        infoVC.logoutCallback = {
-            self.didLogout()
-        }
+        infoVC.logoutCallback = didLogout
+        infoVC.userInfoSelectedCallback = didSelected
         return navController!
     }
 
@@ -59,7 +57,11 @@ class EventCoordinator: Coordinator {
          
     }
     
-    func didSelected(section: UserInfoViewController.UserSections) {
+    func didSelected(section: UserInfoType) {
+        
+    }
+    
+    func didSelected(event: Event, of type: EventType) {
         
     }
 }

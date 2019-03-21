@@ -12,6 +12,7 @@ struct Event {
     var name: String
     var date: Date
     var position: Int?
+    var checkedIn = false
 
     init(name: String, date: Date) {
         self.name = name

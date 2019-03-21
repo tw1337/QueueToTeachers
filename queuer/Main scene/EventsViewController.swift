@@ -13,6 +13,7 @@ class EventsViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
 
     var plusCallback: (() -> Void)?
+    var selectedCallback: ((Event, EventType) -> Void)?
     var dateCounters = [DateCounter]()
     var newEvents: [Event]?
     var availableEvents: [Event]?
@@ -31,8 +32,8 @@ class EventsViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCells), userInfo: nil, repeats: true)
         tableView.register(EventTableViewCell.self)
     }
-    
-    @objc func updateCells(){
+
+    @objc func updateCells() {
         tableView.visibleCells.forEach { ($0 as! EventTableViewCell).update() }
     }
 }
@@ -55,7 +56,7 @@ extension EventsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch EventTableSections(rawValue: section)! {
+        switch EventType(rawValue: section)! {
         case .new:
             return "Новые"
         case .available:
@@ -67,7 +68,7 @@ extension EventsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var out: Int?
-        switch EventTableSections(rawValue: section)! {
+        switch EventType(rawValue: section)! {
         case .new:
             out = newEvents?.count
         case .available:
@@ -81,7 +82,7 @@ extension EventsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableViewCell", for: indexPath)
         guard let eventCell = cell as? EventTableViewCell else { return cell }
-        eventCell.type = EventTableSections(rawValue: indexPath.section)
+        eventCell.type = EventType(rawValue: indexPath.section)
         let event = getEvent(indexPath)!
         eventCell.event = event
         eventCell.update()
@@ -89,7 +90,7 @@ extension EventsViewController: UITableViewDataSource {
     }
 
     func getEvents(_ section: Int) -> [Event]? {
-        switch EventTableSections(rawValue: section)! {
+        switch EventType(rawValue: section)! {
         case .new:
             return newEvents
         case .available:
@@ -102,8 +103,8 @@ extension EventsViewController: UITableViewDataSource {
     func getEvent(_ indexPath: IndexPath) -> Event? {
         return getEvents(indexPath.section)?[indexPath.row]
     }
+}
 
-    enum EventTableSections: Int {
-        case new, available, checkedIn
-    }
+enum EventType: Int {
+    case new, available, checkedIn
 }

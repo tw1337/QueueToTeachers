@@ -44,7 +44,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
-            endingLineNumber = "66">
+            endingLineNumber = "66"
+            landmarkName = "didSelected(event:of:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

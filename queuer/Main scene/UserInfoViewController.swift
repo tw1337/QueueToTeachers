@@ -14,7 +14,7 @@ class UserInfoViewController: UIViewController {
     var info: UserInfo?
 
     @IBOutlet var tableView: UITableView!
-    var userInfoSelectedCallback: ((UserSections) -> Void)?
+    var userInfoSelectedCallback: ((UserInfoType) -> Void)?
     var logoutCallback: (() -> Void)?
 
     @IBAction func didTapLogout(_ sender: Any) {
@@ -34,18 +34,18 @@ class UserInfoViewController: UIViewController {
 extension UserInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        userInfoSelectedCallback?(UserSections(rawValue: indexPath.row)!)
+        userInfoSelectedCallback?(UserInfoType(rawValue: indexPath.row)!)
     }
     
+}
+
+enum UserInfoType: Int {
+    case name, university, group
 }
 
 extension UserInfoViewController: UITableViewDataSource {
     enum UserInfoSections: Int, CaseIterable {
         case general, groupmates
-    }
-
-    enum UserSections: Int {
-        case name, university, group
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,7 +83,7 @@ extension UserInfoViewController: UITableViewDataSource {
     }
     
     private func getText(_ indexPath: IndexPath) -> (String?, String) {
-        switch UserSections(rawValue: indexPath.row)! {
+        switch UserInfoType(rawValue: indexPath.row)! {
         case .name:
             return (info?.name, "Имя")
         case .university:
