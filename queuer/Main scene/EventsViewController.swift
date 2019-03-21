@@ -48,7 +48,6 @@ class EventsViewController: UIViewController {
 
     @objc func didInvalidated() {
         moveOutdated()
-        moveChecked()
     }
 
     private func moveChecked() {
@@ -70,7 +69,10 @@ class EventsViewController: UIViewController {
             let elementToMove = newEvents![indexToMove]
             newEvents?.remove(at: indexToMove)
             availableEvents?.append(elementToMove)
-            tableView.moveRow(at: IndexPath(row: indexToMove, section: 0), to: IndexPath(row: availableEvents!.count - 1, section: 1))
+            let destination = IndexPath(row: 0, section: 1)
+            tableView.moveRow(at: IndexPath(row: indexToMove, section: 0), to: destination)
+            let cell = tableView.cellForRow(at: destination) as! EventTableViewCell
+            cell.indexPath = destination
         }
     }
 }
@@ -119,7 +121,7 @@ extension EventsViewController: UITableViewDataSource {
         let event = getEvent(indexPath)!
         eventCell.event = event
         eventCell.indexPath = indexPath
-        eventCell.buttonCallback = didInvalidated
+        eventCell.buttonCallback = moveChecked
         eventCell.update()
     }
 
