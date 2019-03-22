@@ -94,11 +94,11 @@ extension EventsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch EventType(rawValue: section)! {
         case .new:
-            return "Новые"
+            return newEvents!.count > 0 ? "Новые" : nil
         case .available:
-            return "Доступные"
+            return availableEvents!.count > 0 ? "Доступные" : nil
         case .checkedIn:
-            return "Отмеченные"
+            return checkedInEvents!.count > 0 ? "Отмеченные" : nil
         case .creating:
             fatalError("not supported")
         }

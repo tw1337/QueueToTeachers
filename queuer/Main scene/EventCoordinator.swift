@@ -75,18 +75,62 @@ class EventCoordinator: Coordinator {
     }
 
     func createNewEvent() {
-        showEventViewController()
+        showEventViewController(Event(name: "", date: Date(timeIntervalSinceNow: 0)), .creating)
     }
 
     func didLogout() {
     }
 
     func didSelect(event: Event, of type: EventType) {
-        showEventViewController()
+        showEventViewController(event, type)
     }
 
-    func showEventViewController() {
+    func showEventViewController(_ event: Event, _ type: EventType) {
         let eventViewController = EventViewController()
+        eventViewController.cells = getCells(for: event, of: type)
+        setupController(type, eventViewController, event)
         eventsNavigationController?.pushViewController(eventViewController, animated: true)
+    }
+
+    private func setupController(_ type: EventType, _ eventViewController: EventViewController, _ event: Event) {
+        if type == .available || type == .checkedIn {
+            eventViewController.groupmates = groupmates
+        }
+        eventViewController.title = type != .creating ? event.name : "Создание"
+        let (barTitle, action) = getBarButtonTitleAndCallback(for: type)
+        eventViewController.barButtonTitle = barTitle
+        eventViewController.barButtonAction = action
+    }
+
+    func getCells(for event: Event, of type: EventType) -> [EventCellType] {
+        switch type {
+        case .creating, .available, .checkedIn:
+            let isCreating = type == .creating
+            return [EventCellType.name(text: event.name, isEditable: isCreating), .date(date: event.date, isEditable: isCreating)]
+        case .new:
+            return [EventCellType.name(text: event.name, isEditable: false), .name(text: "Начало через", isEditable: false), .bigText(date: event.date)]
+        }
+    }
+
+    func getBarButtonTitleAndCallback(for type: EventType) -> (String, ((Event) -> Void)?) {
+        switch type {
+        case .creating:
+            return ("Создать", didCreated)
+        case .new:
+            return ("", nil)
+        case .available:
+            return ("Я пойду", didCheckedIn)
+        case .checkedIn:
+            return ("Я не пойду", didUnchecked)
+        }
+    }
+
+    func didCreated(event: Event) {
+    }
+
+    func didCheckedIn(event: Event) {
+    }
+
+    func didUnchecked(event: Event) {
     }
 }

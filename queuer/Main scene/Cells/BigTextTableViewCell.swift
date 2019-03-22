@@ -8,9 +8,22 @@
 
 import UIKit
 
-class BigTextTableViewCell: UITableViewCell {
+class BigTextTableViewCell: UITableViewCell, DateObserver {
+    var dateCounter: DateCounter? {
+        didSet {
+            dateCounter!.observer = self
+        }
+    }
 
-    @IBOutlet weak var bigTextLabel: UILabel!
+    func didUpdate() {
+        bigTextLabel.text = dateCounter!.fullText
+    }
+    
+    func update() {
+        dateCounter?.update()
+    }
+
+    @IBOutlet var bigTextLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,5 +34,4 @@ class BigTextTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

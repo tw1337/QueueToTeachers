@@ -23,6 +23,9 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4д 8ч 10мин 40сек" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEl-bl-hWz">
                         <rect key="frame" x="16" y="34" width="343" height="252"/>
                         <color key="tintColor" name="accent-color"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="252" id="Qd1-yt-0EU"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="64"/>
                         <color key="textColor" name="accent-color"/>
                         <nil key="highlightedColor"/>

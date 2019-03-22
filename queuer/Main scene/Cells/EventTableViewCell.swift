@@ -51,8 +51,8 @@ class EventTableViewCell: UITableViewCell, DateObserver {
 
     func didUpdate() {
         if type == .new {
-            timeLabel.text = dateCounter?.text
-            if dateCounter?.date.isExpired ?? false {
+            timeLabel.text = dateCounter!.text
+            if dateCounter!.date.isExpired  {
                 type = .available
             }
         }

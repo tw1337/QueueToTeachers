@@ -61,4 +61,8 @@ class DateCounter {
         }
         return dayText
     }
+    
+    var fullText: String {
+        return "\(daysToNow?.day ?? 0)д \(daysToNow?.hour ?? 0)ч \(daysToNow?.minute ?? 0)мин \(daysToNow?.second ?? 0)сек"
+    }
 }
