@@ -18,7 +18,7 @@ class EventCoordinator: Coordinator {
 
     var userInfoUpdatedAction: ((UserInfo) -> Void)?
     var groupmatesUpdatedAction: (([Groupmate]) -> Void)?
-    
+
     var userInfo = UserInfo(name: "asa", group: "11") {
         didSet {
             userInfoUpdatedAction?(userInfo)
@@ -47,7 +47,7 @@ class EventCoordinator: Coordinator {
         eventsNavigationController = storyboard.instantiateViewController(withIdentifier: "events") as? UINavigationController
         guard let eventsVC = eventsNavigationController?.viewControllers.first as? EventsViewController else { return }
         eventsVC.plusCallback = createNewEvent
-        eventsVC.selectedCallback = didSelected
+        eventsVC.selectCallback = didSelect
     }
 
     fileprivate func setupUserInfoViewController(_ storyboard: UIStoryboard) {
@@ -75,11 +75,18 @@ class EventCoordinator: Coordinator {
     }
 
     func createNewEvent() {
+        showEventViewController()
     }
 
     func didLogout() {
     }
 
-    func didSelected(event: Event, of type: EventType) {
+    func didSelect(event: Event, of type: EventType) {
+        showEventViewController()
+    }
+
+    func showEventViewController() {
+        let eventViewController = EventViewController()
+        eventsNavigationController?.pushViewController(eventViewController, animated: true)
     }
 }

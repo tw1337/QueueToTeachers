@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/AppDelegate.swift"
-            timestampString = "574939734.598863"
+            timestampString = "574962810.596646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -40,7 +40,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Main scene/UserInfoViewController.swift"
-            timestampString = "574939734.5991679"
+            timestampString = "574962810.59688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -70,7 +70,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Main scene/Cells/EventTableViewCell.swift"
-            timestampString = "574939734.5998189"
+            timestampString = "574962810.597639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -84,7 +84,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Models/DateCounter.swift"
-            timestampString = "574939734.600594"
+            timestampString = "574962810.598165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
@@ -98,11 +98,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Main scene/EventsViewController.swift"
-            timestampString = "574939734.600881"
+            timestampString = "574962810.598328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141">
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -112,11 +114,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Main scene/EventsViewController.swift"
-            timestampString = "574939734.601897"
+            timestampString = "574962810.598574"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141">
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

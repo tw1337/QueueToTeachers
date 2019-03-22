@@ -36,6 +36,13 @@
 		92E54B672243C39800817C95 /* Date+Expired.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E54B662243C39800817C95 /* Date+Expired.swift */; };
 		92E54B722244DBB800817C95 /* EditableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E54B702244DBB800817C95 /* EditableTableViewCell.swift */; };
 		92E54B732244DBB800817C95 /* EditableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92E54B712244DBB800817C95 /* EditableTableViewCell.xib */; };
+		92E54B762244E70000817C95 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E54B742244E70000817C95 /* DatePickerTableViewCell.swift */; };
+		92E54B772244E70000817C95 /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92E54B752244E70000817C95 /* DatePickerTableViewCell.xib */; };
+		92E54B7A2245313800817C95 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E54B782245313800817C95 /* DateTableViewCell.swift */; };
+		92E54B7B2245313800817C95 /* DateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92E54B792245313800817C95 /* DateTableViewCell.xib */; };
+		92E54B7E224534BA00817C95 /* BigTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E54B7C224534BA00817C95 /* BigTextTableViewCell.swift */; };
+		92E54B7F224534BA00817C95 /* BigTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92E54B7D224534BA00817C95 /* BigTextTableViewCell.xib */; };
+		92E54B81224536BA00817C95 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E54B80224536BA00817C95 /* EventViewController.swift */; };
 		92EFBD9622400AA4004193D3 /* UIViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EFBD9522400AA4004193D3 /* UIViewController+Storyboard.swift */; };
 		92EFBD9822400AF8004193D3 /* UIView+nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EFBD9722400AF8004193D3 /* UIView+nib.swift */; };
 		92EFBD9C22401162004193D3 /* LoginButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92EFBD9B22401162004193D3 /* LoginButton.xib */; };
@@ -87,6 +94,13 @@
 		92E54B662243C39800817C95 /* Date+Expired.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Expired.swift"; sourceTree = "<group>"; };
 		92E54B702244DBB800817C95 /* EditableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTableViewCell.swift; sourceTree = "<group>"; };
 		92E54B712244DBB800817C95 /* EditableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditableTableViewCell.xib; sourceTree = "<group>"; };
+		92E54B742244E70000817C95 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
+		92E54B752244E70000817C95 /* DatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerTableViewCell.xib; sourceTree = "<group>"; };
+		92E54B782245313800817C95 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
+		92E54B792245313800817C95 /* DateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateTableViewCell.xib; sourceTree = "<group>"; };
+		92E54B7C224534BA00817C95 /* BigTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigTextTableViewCell.swift; sourceTree = "<group>"; };
+		92E54B7D224534BA00817C95 /* BigTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigTextTableViewCell.xib; sourceTree = "<group>"; };
+		92E54B80224536BA00817C95 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		92EFBD9522400AA4004193D3 /* UIViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboard.swift"; sourceTree = "<group>"; };
 		92EFBD9722400AF8004193D3 /* UIView+nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+nib.swift"; sourceTree = "<group>"; };
 		92EFBD9B22401162004193D3 /* LoginButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginButton.xib; sourceTree = "<group>"; };
@@ -176,6 +190,12 @@
 				928999DC2242C11800A722AD /* EventTableViewCell.xib */,
 				92E54B702244DBB800817C95 /* EditableTableViewCell.swift */,
 				92E54B712244DBB800817C95 /* EditableTableViewCell.xib */,
+				92E54B742244E70000817C95 /* DatePickerTableViewCell.swift */,
+				92E54B752244E70000817C95 /* DatePickerTableViewCell.xib */,
+				92E54B782245313800817C95 /* DateTableViewCell.swift */,
+				92E54B792245313800817C95 /* DateTableViewCell.xib */,
+				92E54B7C224534BA00817C95 /* BigTextTableViewCell.swift */,
+				92E54B7D224534BA00817C95 /* BigTextTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -197,6 +217,7 @@
 			children = (
 				92DDB49622413B4C00CC9FF6 /* EventCoordinator.swift */,
 				92DDB49322413A4200CC9FF6 /* EventsViewController.swift */,
+				92E54B80224536BA00817C95 /* EventViewController.swift */,
 				92DDB49E2242285800CC9FF6 /* UserInfoViewController.swift */,
 				92DDB49C224227BE00CC9FF6 /* Events.storyboard */,
 				928999E92242C17600A722AD /* Cells */,
@@ -309,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92E54B7B2245313800817C95 /* DateTableViewCell.xib in Resources */,
 				92DDB49D224227BE00CC9FF6 /* Events.storyboard in Resources */,
 				92DDB4A5224279E300CC9FF6 /* .gitignore in Resources */,
 				928999DE2242C11800A722AD /* EventTableViewCell.xib in Resources */,
@@ -318,6 +340,8 @@
 				92773D84223FF7B700CFAE44 /* Assets.xcassets in Resources */,
 				92E54B732244DBB800817C95 /* EditableTableViewCell.xib in Resources */,
 				92773D82223FF7B500CFAE44 /* LoginViewController.storyboard in Resources */,
+				92E54B772244E70000817C95 /* DatePickerTableViewCell.xib in Resources */,
+				92E54B7F224534BA00817C95 /* BigTextTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +368,10 @@
 				92773DA12240004900CFAE44 /* LoginField.swift in Sources */,
 				92EFBDA022401726004193D3 /* Colors.swift in Sources */,
 				92E54B65224391C100817C95 /* DateCounter.swift in Sources */,
+				92E54B81224536BA00817C95 /* EventViewController.swift in Sources */,
+				92E54B7A2245313800817C95 /* DateTableViewCell.swift in Sources */,
+				92E54B762244E70000817C95 /* DatePickerTableViewCell.swift in Sources */,
+				92E54B7E224534BA00817C95 /* BigTextTableViewCell.swift in Sources */,
 				92EFBD9E2240118C004193D3 /* LoginButton.swift in Sources */,
 				928999DD2242C11800A722AD /* EventTableViewCell.swift in Sources */,
 				928999DA2242BD8500A722AD /* Event.swift in Sources */,

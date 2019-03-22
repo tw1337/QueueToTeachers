@@ -17,7 +17,7 @@ class EventsViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
 
     var plusCallback: (() -> Void)?
-    var selectedCallback: ((Event, EventType) -> Void)?
+    var selectCallback: ((Event, EventType) -> Void)?
     var newEvents: [Event]?
     var availableEvents: [Event]?
     var checkedInEvents: [Event]?
@@ -53,6 +53,7 @@ class EventsViewController: UIViewController {
     private func moveChecked(at cell: EventTableViewCell) {
         let indexPath = tableView.indexPath(for: cell)!
         let index = indexPath.row
+        
         let eventToMove = availableEvents![index]
         checkedInEvents!.append(eventToMove)
         availableEvents!.remove(at: index)
@@ -75,6 +76,7 @@ class EventsViewController: UIViewController {
 extension EventsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        selectCallback?(getEvent(indexPath)!, EventType(rawValue: indexPath.section)!)
     }
 }
 
@@ -97,6 +99,8 @@ extension EventsViewController: UITableViewDataSource {
             return "Доступные"
         case .checkedIn:
             return "Отмеченные"
+        case .creating:
+            fatalError("not supported")
         }
     }
 
@@ -127,6 +131,8 @@ extension EventsViewController: UITableViewDataSource {
             return availableEvents
         case .checkedIn:
             return checkedInEvents
+        case .creating:
+            fatalError("not supported")
         }
     }
 
@@ -135,6 +141,6 @@ extension EventsViewController: UITableViewDataSource {
     }
 }
 
-enum EventType: Int {
-    case new, available, checkedIn
+enum EventType: Int, CaseIterable {
+    case new, available, checkedIn, creating
 }
