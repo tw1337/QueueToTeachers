@@ -19,10 +19,8 @@ class EventTableViewCell: UITableViewCell, DateObserver {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
 
-    var needsUpdate = false
-    var indexPath: IndexPath!
     var dateCounter: DateCounter? 
-    var buttonCallback: (() -> Void)?
+    var buttonCallback: ((EventTableViewCell) -> Void)?
 
     var date: Date? {
         didSet {
@@ -53,9 +51,8 @@ class EventTableViewCell: UITableViewCell, DateObserver {
 
     func didUpdate() {
         if type == .new {
-            needsUpdate = dateCounter?.date.isExpired ?? false
             timeLabel.text = dateCounter?.text
-            if needsUpdate {
+            if dateCounter?.date.isExpired ?? false {
                 type = .available
             }
         }
@@ -67,10 +64,6 @@ class EventTableViewCell: UITableViewCell, DateObserver {
             timeLabel.alpha = type != .available ? 1 : 0
             update()
         }
-    }
-    
-    override func prepareForReuse() {
-        needsUpdate = false
     }
 
     override func awakeFromNib() {
@@ -87,8 +80,7 @@ class EventTableViewCell: UITableViewCell, DateObserver {
     }
 
     @IBAction func didButtonTap(_ sender: Any) {
-        needsUpdate = true
         type = .checkedIn
-        buttonCallback?()
+        buttonCallback?(self)
     }
 }

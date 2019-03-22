@@ -50,29 +50,24 @@ class EventsViewController: UIViewController {
         moveOutdated()
     }
 
-    private func moveChecked() {
-        let toMove = tableView.visibleCells
-            .compactMap { $0 as? EventTableViewCell }
-            .filter { $0.indexPath.section == 1 && $0.needsUpdate }.first
-        guard let cellToMove = toMove else { return }
-        let index = cellToMove.indexPath.row
+    private func moveChecked(at cell: EventTableViewCell) {
+        let indexPath = tableView.indexPath(for: cell)!
+        let index = indexPath.row
         let eventToMove = availableEvents![index]
         checkedInEvents!.append(eventToMove)
         availableEvents!.remove(at: index)
-        let newIndexPath = IndexPath(row: 0, section: 2)
-        tableView.moveRow(at: cellToMove.indexPath, to: newIndexPath)
-        cellToMove.needsUpdate = false
+        let newIndexPath = IndexPath(row: checkedInEvents!.count - 1, section: 2)
+        tableView.moveRow(at: indexPath, to: newIndexPath)
     }
 
     private func moveOutdated() {
         while let indexToMove = newEvents?.firstIndex(where: { $0.date.isExpired }) {
             let elementToMove = newEvents![indexToMove]
             newEvents?.remove(at: indexToMove)
+            let destination = IndexPath(row: availableEvents?.count ?? 1 - 1, section: 1)
             availableEvents?.append(elementToMove)
-            let destination = IndexPath(row: 0, section: 1)
+
             tableView.moveRow(at: IndexPath(row: indexToMove, section: 0), to: destination)
-            let cell = tableView.cellForRow(at: destination) as! EventTableViewCell
-            cell.indexPath = destination
         }
     }
 }
@@ -120,7 +115,6 @@ extension EventsViewController: UITableViewDataSource {
         eventCell.type = EventType(rawValue: indexPath.section)
         let event = getEvent(indexPath)!
         eventCell.event = event
-        eventCell.indexPath = indexPath
         eventCell.buttonCallback = moveChecked
         eventCell.update()
     }
