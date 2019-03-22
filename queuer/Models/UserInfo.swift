@@ -10,6 +10,7 @@ import Foundation
 
 struct UserInfo {
     var name: String
-    var university: String
     var group: String
+    
+
 }

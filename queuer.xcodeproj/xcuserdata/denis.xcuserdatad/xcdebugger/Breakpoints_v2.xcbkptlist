@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/AppDelegate.swift"
-            timestampString = "574929000.762296"
+            timestampString = "574937008.457496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -39,76 +39,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "queuer/Main scene/EventCoordinator.swift"
-            timestampString = "574929000.762465"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "queuer/Main scene/EventCoordinator.swift"
-            timestampString = "574929000.762556"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "instantiateUserInfoViewController(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "queuer.EventCoordinator.(instantiateUserInfoViewController in _CE098C9B178390588912B8015F3986DA)(__C.UIStoryboard) -&gt; queuer.UserInfoViewController"
-                  moduleName = "queuer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denis/Developer/queuer/queuer/Main%20scene/EventCoordinator.swift"
-                  timestampString = "574789745.644842"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "783">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in queuer.EventCoordinator.(instantiateUserInfoViewController in _CE098C9B178390588912B8015F3986DA)(__C.UIStoryboard) -&gt; queuer.UserInfoViewController"
-                  moduleName = "queuer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/denis/Developer/queuer/queuer/Main%20scene/EventCoordinator.swift"
-                  timestampString = "574789745.68136"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "queuer/Main scene/UserInfoViewController.swift"
-            timestampString = "574929000.762639"
+            timestampString = "574937008.45763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "tableView(_:titleForHeaderInSection:)"
-            landmarkType = "7">
+            startingLineNumber = "122"
+            endingLineNumber = "122">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -134,7 +70,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Main scene/Cells/EventTableViewCell.swift"
-            timestampString = "574929000.762753"
+            timestampString = "574937008.457741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -148,7 +84,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Models/DateCounter.swift"
-            timestampString = "574929000.762915"
+            timestampString = "574937008.457883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
@@ -162,7 +98,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Main scene/EventsViewController.swift"
-            timestampString = "574929000.763018"
+            timestampString = "574937008.457973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
@@ -176,7 +112,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Main scene/EventsViewController.swift"
-            timestampString = "574929000.76475"
+            timestampString = "574937008.459132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"

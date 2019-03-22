@@ -32,7 +32,7 @@ class EventsViewController: UIViewController {
                      Event(name: "aa", date: Date(timeIntervalSinceNow: 5)),
                      Event(name: "aa", date: Date(timeIntervalSinceNow: 15)),
                      Event(name: "aa", date: Date(timeIntervalSinceNow: 5))]
-        availableEvents = [Event(name: "123", date: Date(timeIntervalSinceNow: -1 * 24 * 7 * 1000))]
+        availableEvents = [Event(name: "123", date: Date(timeIntervalSinceNow: -1 * 24 * 7 * 1000)), Event(name: "123", date: Date(timeIntervalSinceNow: -1 * 24 * 7 * 1000)), Event(name: "123", date: Date(timeIntervalSinceNow: -1 * 24 * 7 * 1000)), Event(name: "123", date: Date(timeIntervalSinceNow: -1 * 24 * 7 * 1000)), Event(name: "123", date: Date(timeIntervalSinceNow: -1 * 24 * 7 * 1000)), Event(name: "123", date: Date(timeIntervalSinceNow: -1 * 24 * 7 * 1000)), Event(name: "123", date: Date(timeIntervalSinceNow: -1 * 24 * 7 * 1000))]
         checkedInEvents = [Event(name: "111111", date: Date(timeIntervalSinceNow: -13 * 10000))]
         tableView.delegate = self
         tableView.dataSource = self

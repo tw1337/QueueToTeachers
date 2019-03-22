@@ -53,8 +53,7 @@ enum LoginViewBuilder {
             addView(generateField("Почта"))
             viewController.actionButton.title = "Далее".uppercased()
         case .university:
-            viewController.titleLabel.text = "Выбор ВУЗА".uppercased()
-            addView(generateField("Вуз"))
+            viewController.titleLabel.text = "Выбор группы".uppercased()
             addView(generateField("Группа"))
             viewController.actionButton.title = "Создать".uppercased()
         }

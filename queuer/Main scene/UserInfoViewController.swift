@@ -11,7 +11,12 @@ import UIKit
 class UserInfoViewController: UIViewController {
     var groupmates: [Groupmate]?
 
-    var info: UserInfo?
+    var info: UserInfo? {
+        didSet {
+            print("user")
+            tableView?.reloadData()
+        }
+    }
 
     @IBOutlet var tableView: UITableView!
     var userInfoSelectedCallback: ((UserInfoType) -> Void)?
@@ -25,8 +30,6 @@ class UserInfoViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        info = UserInfo(name: "asa", university: "asdd", group: "11")
-        groupmates = [Groupmate(name: "11"), Groupmate(name: "12ada")]
         // Do any additional setup after loading the view.
     }
 }
@@ -34,13 +37,14 @@ class UserInfoViewController: UIViewController {
 extension UserInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        userInfoSelectedCallback?(UserInfoType(rawValue: indexPath.row)!)
+        if UserInfoSections(rawValue: indexPath.section) == .general {
+            userInfoSelectedCallback?(UserInfoType(rawValue: indexPath.row)!)
+        }
     }
-    
 }
 
-enum UserInfoType: Int {
-    case name, university, group
+enum UserInfoType: Int, CaseIterable {
+    case name, group
 }
 
 extension UserInfoViewController: UITableViewDataSource {
@@ -51,7 +55,7 @@ extension UserInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch UserInfoSections(rawValue: section)! {
         case .general:
-            return 3
+            return UserInfoType.allCases.count
         case .groupmates:
             return groupmates?.count ?? 0
         }
@@ -69,7 +73,7 @@ extension UserInfoViewController: UITableViewDataSource {
             return getGroupmateCell(in: tableView, for: indexPath)
         }
     }
-    
+
     func getUserInfoCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         if cell == nil {
@@ -81,18 +85,16 @@ extension UserInfoViewController: UITableViewDataSource {
         cell?.detailTextLabel?.text = text ?? ""
         return cell!
     }
-    
+
     private func getText(_ indexPath: IndexPath) -> (String?, String) {
         switch UserInfoType(rawValue: indexPath.row)! {
         case .name:
             return (info?.name, "Имя")
-        case .university:
-            return (info?.university, "Университет")
         case .group:
             return (info?.group, "Группа")
         }
     }
-    
+
     func getGroupmateCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "1")
         if cell == nil {
@@ -103,11 +105,11 @@ extension UserInfoViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-         let subview = UIView(frame: view.bounds)
-         subview.backgroundColor = UIColor(named: "accent-color")
+        let subview = UIView(frame: view.bounds)
+        subview.backgroundColor = UIColor(named: "accent-color")
         view.insertSubview(subview, at: 1)
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch UserInfoSections(rawValue: section)! {
         case .general:
