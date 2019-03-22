@@ -11,25 +11,25 @@ import UIKit
 class UserInfoViewController: UIViewController {
     var groupmates: [Groupmate]?
 
-    var info: UserInfo? {
-        didSet {
-            print("user")
-            tableView?.reloadData()
-        }
-    }
+    var info: UserInfo?
 
     @IBOutlet var tableView: UITableView!
-    var userInfoSelectedCallback: ((UserInfoType) -> Void)?
+    var userInfoSelectedCallback: ((String, UserInfoType) -> Void)?
     var logoutCallback: (() -> Void)?
 
     @IBAction func didTapLogout(_ sender: Any) {
         logoutCallback?()
     }
 
+    @IBAction func didTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(EditableTableViewCell.self)
         // Do any additional setup after loading the view.
     }
 }
@@ -37,9 +37,6 @@ class UserInfoViewController: UIViewController {
 extension UserInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if UserInfoSections(rawValue: indexPath.section) == .general {
-            userInfoSelectedCallback?(UserInfoType(rawValue: indexPath.row)!)
-        }
     }
 }
 
@@ -75,23 +72,30 @@ extension UserInfoViewController: UITableViewDataSource {
     }
 
     func getUserInfoCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .value1, reuseIdentifier: "Cell")
-        }
-        cell?.accessoryType = .disclosureIndicator
-        let (text, description) = getText(indexPath)
-        cell?.textLabel?.text = description
-        cell?.detailTextLabel?.text = text ?? ""
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EditableTableViewCell", for: indexPath)
+        guard let editableCell = cell as? EditableTableViewCell else { return cell }
+        editableCell.textField.text = getText(indexPath)
+        editableCell.type = UserInfoType(rawValue: indexPath.row)
+        editableCell.endEditingCallback = updateUserInfo
+        return editableCell
     }
 
-    private func getText(_ indexPath: IndexPath) -> (String?, String) {
+    func updateUserInfo(text: String, type: UserInfoType) {
+        guard !text.isEmpty else { tableView.reloadData(); return }
+        if type == .group {
+            info?.group = text
+        } else {
+            info?.name = text
+        }
+        userInfoSelectedCallback?(text, type)
+    }
+
+    private func getText(_ indexPath: IndexPath) -> String? {
         switch UserInfoType(rawValue: indexPath.row)! {
         case .name:
-            return (info?.name, "Имя")
+            return info?.name
         case .group:
-            return (info?.group, "Группа")
+            return info?.group
         }
     }
 

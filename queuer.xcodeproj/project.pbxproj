@@ -34,8 +34,8 @@
 		92DDB4A5224279E300CC9FF6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 92DDB4A4224279E300CC9FF6 /* .gitignore */; };
 		92E54B65224391C100817C95 /* DateCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E54B64224391C100817C95 /* DateCounter.swift */; };
 		92E54B672243C39800817C95 /* Date+Expired.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E54B662243C39800817C95 /* Date+Expired.swift */; };
-		92E54B692244C36300817C95 /* UserInfoEditorViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92E54B682244C36300817C95 /* UserInfoEditorViewController.storyboard */; };
-		92E54B6B2244C41A00817C95 /* UserInfoEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E54B6A2244C41A00817C95 /* UserInfoEditorViewController.swift */; };
+		92E54B722244DBB800817C95 /* EditableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E54B702244DBB800817C95 /* EditableTableViewCell.swift */; };
+		92E54B732244DBB800817C95 /* EditableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92E54B712244DBB800817C95 /* EditableTableViewCell.xib */; };
 		92EFBD9622400AA4004193D3 /* UIViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EFBD9522400AA4004193D3 /* UIViewController+Storyboard.swift */; };
 		92EFBD9822400AF8004193D3 /* UIView+nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EFBD9722400AF8004193D3 /* UIView+nib.swift */; };
 		92EFBD9C22401162004193D3 /* LoginButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92EFBD9B22401162004193D3 /* LoginButton.xib */; };
@@ -85,8 +85,8 @@
 		92DDB4A4224279E300CC9FF6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		92E54B64224391C100817C95 /* DateCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounter.swift; sourceTree = "<group>"; };
 		92E54B662243C39800817C95 /* Date+Expired.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Expired.swift"; sourceTree = "<group>"; };
-		92E54B682244C36300817C95 /* UserInfoEditorViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserInfoEditorViewController.storyboard; sourceTree = "<group>"; };
-		92E54B6A2244C41A00817C95 /* UserInfoEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEditorViewController.swift; sourceTree = "<group>"; };
+		92E54B702244DBB800817C95 /* EditableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTableViewCell.swift; sourceTree = "<group>"; };
+		92E54B712244DBB800817C95 /* EditableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditableTableViewCell.xib; sourceTree = "<group>"; };
 		92EFBD9522400AA4004193D3 /* UIViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboard.swift"; sourceTree = "<group>"; };
 		92EFBD9722400AF8004193D3 /* UIView+nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+nib.swift"; sourceTree = "<group>"; };
 		92EFBD9B22401162004193D3 /* LoginButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginButton.xib; sourceTree = "<group>"; };
@@ -174,6 +174,8 @@
 			children = (
 				928999DB2242C11800A722AD /* EventTableViewCell.swift */,
 				928999DC2242C11800A722AD /* EventTableViewCell.xib */,
+				92E54B702244DBB800817C95 /* EditableTableViewCell.swift */,
+				92E54B712244DBB800817C95 /* EditableTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -198,8 +200,6 @@
 				92DDB49E2242285800CC9FF6 /* UserInfoViewController.swift */,
 				92DDB49C224227BE00CC9FF6 /* Events.storyboard */,
 				928999E92242C17600A722AD /* Cells */,
-				92E54B682244C36300817C95 /* UserInfoEditorViewController.storyboard */,
-				92E54B6A2244C41A00817C95 /* UserInfoEditorViewController.swift */,
 			);
 			path = "Main scene";
 			sourceTree = "<group>";
@@ -314,9 +314,9 @@
 				928999DE2242C11800A722AD /* EventTableViewCell.xib in Resources */,
 				92773D9F2240003400CFAE44 /* LoginField.xib in Resources */,
 				92EFBD9C22401162004193D3 /* LoginButton.xib in Resources */,
-				92E54B692244C36300817C95 /* UserInfoEditorViewController.storyboard in Resources */,
 				92773D87223FF7B700CFAE44 /* LaunchScreen.storyboard in Resources */,
 				92773D84223FF7B700CFAE44 /* Assets.xcassets in Resources */,
+				92E54B732244DBB800817C95 /* EditableTableViewCell.xib in Resources */,
 				92773D82223FF7B500CFAE44 /* LoginViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +338,7 @@
 				92DDB48F22402AAF00CC9FF6 /* LoginViewBuilder.swift in Sources */,
 				92E54B672243C39800817C95 /* Date+Expired.swift in Sources */,
 				92DDB49F2242285800CC9FF6 /* UserInfoViewController.swift in Sources */,
+				92E54B722244DBB800817C95 /* EditableTableViewCell.swift in Sources */,
 				928999EB2242C3F100A722AD /* TableView+Register.swift in Sources */,
 				92DDB49922421ABA00CC9FF6 /* MainCoordinator.swift in Sources */,
 				92773DA12240004900CFAE44 /* LoginField.swift in Sources */,
@@ -349,7 +350,6 @@
 				92773D7F223FF7B500CFAE44 /* LoginViewController.swift in Sources */,
 				92DDB49B22421E2D00CC9FF6 /* CoordinatorUtil.swift in Sources */,
 				92DDB49422413A4200CC9FF6 /* EventsViewController.swift in Sources */,
-				92E54B6B2244C41A00817C95 /* UserInfoEditorViewController.swift in Sources */,
 				92DDB49722413B4C00CC9FF6 /* EventCoordinator.swift in Sources */,
 				92773D7D223FF7B500CFAE44 /* AppDelegate.swift in Sources */,
 				92DDB4A32242620200CC9FF6 /* Groupmate.swift in Sources */,

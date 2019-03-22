@@ -54,16 +54,14 @@ class EventCoordinator: Coordinator {
         userInfoNavigationController = storyboard.instantiateViewController(withIdentifier: "info") as? UINavigationController
         guard let infoVC = userInfoNavigationController?.viewControllers.first as? UserInfoViewController else { return }
         infoVC.logoutCallback = didLogout
-        infoVC.userInfoSelectedCallback = didSelected
         infoVC.info = userInfo
         infoVC.groupmates = groupmates
-        userInfoUpdatedAction = {
-            infoVC.info = $0
-            infoVC.tableView.reloadData()
-        }
-        groupmatesUpdatedAction = {
-            infoVC.groupmates = $0
-            infoVC.tableView.reloadData()
+        infoVC.userInfoSelectedCallback = {
+            if $1 == .name {
+                self.userInfo.name = $0
+            } else {
+                self.userInfo.group = $0
+            }
         }
     }
 
@@ -80,32 +78,6 @@ class EventCoordinator: Coordinator {
     }
 
     func didLogout() {
-    }
-
-    func didSelected(section: UserInfoType) {
-        let alertController = prepareAlertController(for: section)
-        userInfoNavigationController?.visibleViewController?.present(alertController, animated: true)
-    }
-
-    func prepareAlertController(for section: UserInfoType) -> UIViewController {
-        let titleString = "Введите " + (section == .group ? "новую группу" : "новое имя")
-        let alertController = UIAlertController(title: titleString, message: "", preferredStyle: .alert)
-        let saveAction = UIAlertAction(title: "Обновить", style: .default, handler: { _ -> Void in
-            let textField = alertController.textFields![0] as UITextField
-            guard let text = textField.text, !text.isEmpty else { return }
-            if section == .group {
-                self.userInfo.group = text
-            } else {
-                self.userInfo.name = text
-            }
-        })
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: { (_: UIAlertAction!) -> Void in })
-        alertController.addTextField { (textField: UITextField!) -> Void in
-            textField.text = section == .group ? self.userInfo.group : self.userInfo.name
-        }
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        return alertController
     }
 
     func didSelected(event: Event, of type: EventType) {

@@ -62,6 +62,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="51v-1l-5he" firstAttribute="trailing" secondItem="AKi-Yy-r62" secondAttribute="trailing" id="EW0-vZ-mw1"/>
                             <constraint firstItem="AKi-Yy-r62" firstAttribute="top" secondItem="51v-1l-5he" secondAttribute="top" id="Lnw-4L-YHE"/>
@@ -69,6 +70,9 @@
                             <constraint firstItem="AKi-Yy-r62" firstAttribute="leading" secondItem="51v-1l-5he" secondAttribute="leading" id="vt2-4M-rbl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="51v-1l-5he"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="lXj-r8-rT7" appends="YES" id="odJ-3B-k92"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="О себе" id="hbT-Lp-VTj">
                         <barButtonItem key="rightBarButtonItem" title="Выйти" id="8pA-kE-S1Y">
@@ -83,6 +87,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKd-ID-2Ai" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lXj-r8-rT7">
+                    <connections>
+                        <action selector="didTap:" destination="Ntv-qE-3zW" id="NCE-fL-xF9"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1892" y="330.29556650246309"/>
         </scene>
