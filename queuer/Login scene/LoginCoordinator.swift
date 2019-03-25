@@ -73,6 +73,7 @@ class LoginCoordinator: Coordinator {
 
     private func processLogin(_ info: [String: String]) {
         dump(info)
+        UserDefaults.standard.set(info["Имя пользователя"], forKey: "username")
     }
 
     private func processInfo(_ info: [String: String]) {

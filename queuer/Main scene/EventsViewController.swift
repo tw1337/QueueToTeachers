@@ -42,6 +42,10 @@ class EventsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(didInvalidated), name: .invalidated, object: nil)
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .invalidated, object: nil)
+    }
+
     @objc func updateCells() {
         tableView.visibleCells.forEach { ($0 as! EventTableViewCell).update() }
     }
@@ -53,7 +57,7 @@ class EventsViewController: UIViewController {
     private func moveChecked(at cell: EventTableViewCell) {
         let indexPath = tableView.indexPath(for: cell)!
         let index = indexPath.row
-        
+
         let eventToMove = availableEvents![index]
         checkedInEvents!.append(eventToMove)
         availableEvents!.remove(at: index)

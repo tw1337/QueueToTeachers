@@ -25,7 +25,7 @@ class EventCoordinator: Coordinator {
         }
     }
 
-    var groupmates = [Groupmate(name: "11"), Groupmate(name: "12ada")] {
+    var groupmates = [Groupmate(name: "11", position: 1), Groupmate(name: "12ada", position: 2)] {
         didSet {
             groupmatesUpdatedAction?(groupmates)
         }
@@ -97,9 +97,10 @@ class EventCoordinator: Coordinator {
             eventViewController.groupmates = groupmates
         }
         eventViewController.title = type != .creating ? event.name : "Создание"
-        let (barTitle, action) = getBarButtonTitleAndCallback(for: type)
+        let (barTitle, action, invalidateCallback) = getBarButtonTitleAndCallbacks(for: type)
         eventViewController.barButtonTitle = barTitle
         eventViewController.barButtonAction = action
+        eventViewController.didInvalidatedCallback = invalidateCallback
     }
 
     func getCells(for event: Event, of type: EventType) -> [EventCellType] {
@@ -112,25 +113,32 @@ class EventCoordinator: Coordinator {
         }
     }
 
-    func getBarButtonTitleAndCallback(for type: EventType) -> (String, ((Event) -> Void)?) {
+    func getBarButtonTitleAndCallbacks(for type: EventType) -> (String, ((Event) -> Void)?, ((Event) -> Void)?) {
         switch type {
         case .creating:
-            return ("Создать", didCreated)
+            return ("Создать", didCreated, nil)
         case .new:
-            return ("", nil)
+            return ("", nil, didBecomeAvailable)
         case .available:
-            return ("Я пойду", didCheckedIn)
+            return ("Я пойду", didCheckedIn, nil)
         case .checkedIn:
-            return ("Я не пойду", didUnchecked)
+            return ("Я не пойду", didUnchecked, nil)
         }
     }
 
     func didCreated(event: Event) {
+        print("created")
     }
 
     func didCheckedIn(event: Event) {
+        print("checked")
     }
 
     func didUnchecked(event: Event) {
+        print("unchecked")
+    }
+    
+    func didBecomeAvailable(event: Event){
+        print("invalidated")
     }
 }

@@ -15,10 +15,12 @@ enum EventCellType {
 class EventViewController: UITableViewController {
     var barButtonTitle: String?
     var barButtonAction: ((Event) -> Void)?
+    var didInvalidatedCallback: ((Event) -> Void)?
     var cells: [EventCellType]?
     var groupmates: [Groupmate]?
     var datePickerIndexPath: IndexPath?
     var bigCells = [BigTextTableViewCell]()
+    var event: Event?
 
     let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -50,6 +52,8 @@ class EventViewController: UITableViewController {
         return cell as? DateTableViewCell
     }
 
+    var username: String!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: barButtonTitle, style: UIBarButtonItem.Style.done, target: self, action: #selector(didBarButtonPress))
@@ -61,6 +65,7 @@ class EventViewController: UITableViewController {
         let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCells), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
         NotificationCenter.default.addObserver(self, selector: #selector(didInvalidated), name: .invalidated, object: nil)
+        username = UserDefaults.standard.string(forKey: "username")
     }
 
     @objc func updateCells() {
@@ -68,6 +73,11 @@ class EventViewController: UITableViewController {
     }
 
     @objc func didInvalidated() {
+        NotificationCenter.default.removeObserver(self, name: .invalidated, object: nil)
+        if event == nil {
+            event = createEvent()
+        }
+        didInvalidatedCallback?(event!)
     }
 
     @objc func didTap() {
@@ -75,8 +85,10 @@ class EventViewController: UITableViewController {
     }
 
     @objc func didBarButtonPress() {
-        let event = createEvent()
-        barButtonAction?(event)
+        if event == nil {
+            event = createEvent()
+        }
+        barButtonAction?(event!)
     }
 
     func createEvent() -> Event {
@@ -149,10 +161,15 @@ class EventViewController: UITableViewController {
     private func getGroupmateCell(_ indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "1")
         if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "1")
+            cell = UITableViewCell(style: .value1, reuseIdentifier: "1")
         }
-        cell?.textLabel?.text = groupmates?[indexPath.row].name ?? ""
-        // TODO: check username
+        let groupmate = groupmates![indexPath.row]
+        cell?.textLabel?.text = groupmate.name
+        cell?.detailTextLabel?.text = String(groupmate.position)
+        cell?.isUserInteractionEnabled = false
+        if username == groupmate.name {
+            cell?.textLabel?.textColor = UIColor(named: "accent-color")
+        }
         return cell!
     }
 
@@ -188,6 +205,7 @@ class EventViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView.cellForRow(at: indexPath) is DateTableViewCell else { return }
         tableView.beginUpdates()
         if let datePickerIndexPath = datePickerIndexPath, datePickerIndexPath.row - 1 == indexPath.row {
             tableView.deleteRows(at: [datePickerIndexPath], with: .fade)

@@ -10,4 +10,5 @@ import Foundation
 
 struct Groupmate {
     var name: String
+    var position: Int
 }
