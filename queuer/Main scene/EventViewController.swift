@@ -13,21 +13,23 @@ enum EventCellType {
 }
 
 class EventViewController: UITableViewController {
-    var barButtonTitle: String?
-    var barButtonAction: ((Event) -> Void)?
+    var barButtonTitle: String! {
+        didSet {
+            navigationItem.rightBarButtonItem?.title = barButtonTitle
+        }
+    }
+    var barButtonAction: ((inout Event) -> Void)?
     var didInvalidatedCallback: ((Event) -> Void)?
     var cells: [EventCellType]?
     var groupmates: [Groupmate]?
+    var event: Event!
+    var eventType: EventType!
+    var username: String!
+    var nameIndexPath: IndexPath?
+    var dateIndexPath: IndexPath?
     var datePickerIndexPath: IndexPath?
-    var bigCells = [BigTextTableViewCell]()
-    var event: Event?
-
-    let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy HH:mm"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        return dateFormatter
-    }()
+    var bigCellIndexPath: IndexPath?
+    var usernameIndexPath: IndexPath?
 
     var date: Date? {
         guard let dateIndex = dateCellRow else { return nil }
@@ -52,8 +54,6 @@ class EventViewController: UITableViewController {
         return cell as? DateTableViewCell
     }
 
-    var username: String!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: barButtonTitle, style: UIBarButtonItem.Style.done, target: self, action: #selector(didBarButtonPress))
@@ -65,11 +65,15 @@ class EventViewController: UITableViewController {
         let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCells), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
         NotificationCenter.default.addObserver(self, selector: #selector(didInvalidated), name: .invalidated, object: nil)
+        UserDefaults.standard.set("11", forKey: "username")
         username = UserDefaults.standard.string(forKey: "username")
     }
 
     @objc func updateCells() {
-        bigCells.forEach { $0.update() }
+        guard let indexPath = bigCellIndexPath else { return }
+        let cell = tableView.cellForRow(at: indexPath)
+        guard let bigTextCell = cell as? BigTextTableViewCell else { return }
+        bigTextCell.update()
     }
 
     @objc func didInvalidated() {
@@ -88,11 +92,50 @@ class EventViewController: UITableViewController {
         if event == nil {
             event = createEvent()
         }
-        barButtonAction?(event!)
+        barButtonAction?(&event!)
+        guard eventType == .checkedIn || eventType == .available else { return }
+        if let indexPath = usernameIndexPath {
+            groupmates?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            updateGroupmatePosition(indexPath)
+            usernameIndexPath = nil
+        } else {
+            let row = groupmates!.count
+            let indexPath = IndexPath(row: row, section: EventSections.groupmates.rawValue)
+            groupmates!.append(Groupmate(name: username, position: row + 1))
+            tableView.insertRows(at: [indexPath], with: .fade)
+            usernameIndexPath = indexPath
+        }
+    }
+
+    private func updateGroupmatePosition(_ indexPath: IndexPath) {
+        let num = indexPath.row
+        for index in 0 ..< groupmates!.count {
+            let mate = groupmates![index]
+            if mate.position > num {
+                groupmates![index].position -= 1
+            }
+        }
+        let indexPaths = (num ..< groupmates!.count)
+            .map { IndexPath(row: $0, section: EventSections.groupmates.rawValue) }
+        tableView.reloadRows(at: indexPaths, with: .fade)
+    }
+
+    var eventName: String {
+        let cell = tableView.cellForRow(at: nameIndexPath!)
+        guard let nameCell = cell as? EditableTableViewCell else { return "" }
+        return nameCell.textField.text!
+    }
+
+    var eventDate: Date {
+        let cell = tableView.cellForRow(at: dateIndexPath!)
+        let fallbackDate = Date(timeIntervalSince1970: 0)
+        guard let dateCell = cell as? DateTableViewCell else { return fallbackDate }
+        return dateCell.date ?? fallbackDate
     }
 
     func createEvent() -> Event {
-        return Event(name: "", date: Date())
+        return Event(name: eventName, date: eventDate)
     }
 
     // MARK: - Table view data source
@@ -168,6 +211,7 @@ class EventViewController: UITableViewController {
         cell?.detailTextLabel?.text = String(groupmate.position)
         cell?.isUserInteractionEnabled = false
         if username == groupmate.name {
+            usernameIndexPath = indexPath
             cell?.textLabel?.textColor = UIColor(named: "accent-color")
         }
         return cell!
@@ -177,7 +221,7 @@ class EventViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BigTextTableViewCell", for: indexPath)
         guard let bigTextCell = cell as? BigTextTableViewCell else { return cell }
         bigTextCell.dateCounter = DateCounter(date: date)
-        bigCells.append(bigTextCell)
+        bigCellIndexPath = indexPath
         return cell
     }
 
@@ -190,8 +234,9 @@ class EventViewController: UITableViewController {
     private func getDateCell(_ indexPath: IndexPath, _ date: Date?, _ isEditable: Bool) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DateTableViewCell", for: indexPath)
         guard let dateCell = cell as? DateTableViewCell else { return cell }
+        dateIndexPath = indexPath
         dateCell.titleLabel.text = "Начало"
-        dateCell.detailLabel.text = dateFormatter.string(from: date ?? Date(timeIntervalSince1970: 0))
+        dateCell.date = date ?? Date(timeIntervalSinceNow: 60 * 5)
         dateCell.isUserInteractionEnabled = isEditable
         return cell
     }
@@ -199,6 +244,7 @@ class EventViewController: UITableViewController {
     private func getNameCell(_ indexPath: IndexPath, _ text: String, _ isEditable: Bool) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EditableTableViewCell", for: indexPath)
         guard let editableCell = cell as? EditableTableViewCell else { return cell }
+        nameIndexPath = indexPath
         editableCell.textField.text = text
         editableCell.isUserInteractionEnabled = isEditable
         return cell
@@ -236,6 +282,6 @@ class EventViewController: UITableViewController {
 
 extension EventViewController: DatePickerDelegate {
     func didValueChange(_ newValue: Date) {
-        dateCell?.detailLabel!.text = dateFormatter.string(from: newValue)
+        dateCell?.date = newValue
     }
 }

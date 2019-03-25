@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/AppDelegate.swift"
-            timestampString = "574962810.596646"
+            timestampString = "575205014.417164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -40,7 +40,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Main scene/UserInfoViewController.swift"
-            timestampString = "574962810.59688"
+            timestampString = "575205014.4173861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -70,7 +70,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Main scene/Cells/EventTableViewCell.swift"
-            timestampString = "574962810.597639"
+            timestampString = "575191871.691115"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -84,11 +84,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "queuer/Models/DateCounter.swift"
-            timestampString = "574962810.598165"
+            timestampString = "574986177.353593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65">
+            startingLineNumber = "69"
+            endingLineNumber = "69">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "queuer/Main scene/EventViewController.swift"
+            timestampString = "575205014.418094"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -97,14 +111,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "queuer/Main scene/EventsViewController.swift"
-            timestampString = "574962810.598328"
+            filePath = "queuer/Main scene/EventViewController.swift"
+            timestampString = "575205014.419098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "288"
+            endingLineNumber = "288">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -113,14 +125,40 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "queuer/Main scene/EventsViewController.swift"
-            timestampString = "574962810.598574"
+            filePath = "queuer/Main scene/EventViewController.swift"
+            timestampString = "575205014.419915"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "288"
+            endingLineNumber = "288">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "queuer/Main scene/EventViewController.swift"
+            timestampString = "575205014.42314"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "queuer/Main scene/EventViewController.swift"
+            timestampString = "575205014.425522"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

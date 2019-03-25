@@ -9,9 +9,22 @@
 import UIKit
 
 class DateTableViewCell: UITableViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var detailLabel: UILabel!
+
+    var date: Date? {
+        didSet {
+            detailLabel.text = dateFormatter.string(from: date!)
+        }
+    }
+
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy HH:mm"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        return dateFormatter
+    }()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +35,4 @@ class DateTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

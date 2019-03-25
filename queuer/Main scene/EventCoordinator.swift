@@ -100,6 +100,8 @@ class EventCoordinator: Coordinator {
         let (barTitle, action, invalidateCallback) = getBarButtonTitleAndCallbacks(for: type)
         eventViewController.barButtonTitle = barTitle
         eventViewController.barButtonAction = action
+        eventViewController.eventType = type
+        eventViewController.event = event
         eventViewController.didInvalidatedCallback = invalidateCallback
     }
 
@@ -113,7 +115,7 @@ class EventCoordinator: Coordinator {
         }
     }
 
-    func getBarButtonTitleAndCallbacks(for type: EventType) -> (String, ((Event) -> Void)?, ((Event) -> Void)?) {
+    func getBarButtonTitleAndCallbacks(for type: EventType) -> (String, ((inout Event) -> Void)?, ((Event) -> Void)?) {
         switch type {
         case .creating:
             return ("Создать", didCreated, nil)
@@ -126,19 +128,29 @@ class EventCoordinator: Coordinator {
         }
     }
 
-    func didCreated(event: Event) {
-        print("created")
+    func didCreated(event: inout Event) {
+        eventsNavigationController?.popViewController(animated: true)
     }
 
-    func didCheckedIn(event: Event) {
-        print("checked")
+    func didCheckedIn( event: inout Event) {
+        event.checkedIn = true
+        setupEventViewController(as: .checkedIn)
     }
 
-    func didUnchecked(event: Event) {
-        print("unchecked")
+    func didUnchecked( event: inout Event) {
+        event.checkedIn = false
+        setupEventViewController(as: .available)
     }
-    
-    func didBecomeAvailable(event: Event){
-        print("invalidated")
+
+    func didBecomeAvailable(event: Event) {
+        dump(event)
+    }
+
+    func setupEventViewController(as type: EventType) {
+        let viewController = eventsNavigationController?.visibleViewController
+        guard let eventVC = viewController as? EventViewController else { return }
+        let (title, callback, _) = getBarButtonTitleAndCallbacks(for: type)
+        eventVC.barButtonTitle = title
+        eventVC.barButtonAction = callback
     }
 }

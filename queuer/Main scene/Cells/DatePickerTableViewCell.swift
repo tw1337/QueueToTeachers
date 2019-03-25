@@ -19,10 +19,16 @@ class DatePickerTableViewCell: UITableViewCell {
     @IBAction func didValueChange(_ sender: UIDatePicker) {
         delegate?.didValueChange(sender.date)
     }
-
+    
     @IBOutlet var datePicker: UIDatePicker!
     override func awakeFromNib() {
         super.awakeFromNib()
+        let fiveMinutes = 60 * 5
+           let week = 60 * 60 * 24 * 14
+        datePicker.minimumDate = Date(timeIntervalSinceNow: Double(fiveMinutes))
+     
+        datePicker.maximumDate = Date(timeIntervalSinceNow: Double(week))
+        
         // Initialization code
     }
 
