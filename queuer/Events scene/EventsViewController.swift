@@ -39,7 +39,7 @@ class EventsViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCells), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: RunLoop.Mode.common)
         tableView.register(EventTableViewCell.self)
-        NotificationCenter.default.addObserver(self, selector: #selector(didInvalidated), name: .invalidated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didInvalidate), name: .invalidated, object: nil)
     }
 
     deinit {
@@ -50,7 +50,7 @@ class EventsViewController: UIViewController {
         tableView.visibleCells.forEach { ($0 as! EventTableViewCell).update() }
     }
 
-    @objc func didInvalidated() {
+    @objc func didInvalidate() {
         moveOutdated()
     }
 

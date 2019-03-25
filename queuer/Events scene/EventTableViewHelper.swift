@@ -66,7 +66,7 @@ extension EventTableViewHelper: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell = tableView.cellForRow(at: indexPath)
-        guard cell is BigTextTableViewCell || indexPath == controller.datePickerIndexPath else { return tableView.rowHeight }
+        guard cell is BigTextTableViewCell || cell is ButtonTableViewCell || indexPath == controller.datePickerIndexPath else { return tableView.rowHeight }
         return 320
     }
     
@@ -75,7 +75,8 @@ extension EventTableViewHelper: UITableViewDataSource {
     func getInfoCell(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         switch controller.cells![indexPath.row] {
         case let .bigText(date):
-            return getBigTextCell(tableView, indexPath, date)
+            return !controller.isInvalidated ?
+                getBigTextCell(tableView, indexPath, date) : getButtonCell(tableView, indexPath)
         case let .date(date, isEditable):
             return getDateCell(tableView, indexPath, date, isEditable)
         case let .name(text, isEditable):
@@ -128,6 +129,12 @@ extension EventTableViewHelper: UITableViewDataSource {
         editableCell.textField.text = text
         editableCell.isUserInteractionEnabled = isEditable
         return editableCell
+    }
+    
+    private func getButtonCell(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
+        let buttonCell = tableView.dequeueReusableCell(of: ButtonTableViewCell.self, for: indexPath)
+        buttonCell.tapCallback = controller.didBarButtonPress
+        return buttonCell
     }
 }
 

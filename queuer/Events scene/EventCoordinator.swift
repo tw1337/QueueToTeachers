@@ -81,7 +81,7 @@ class EventCoordinator: Coordinator {
         case .creating:
             return ("Создать", didCreated, nil)
         case .new:
-            return ("", nil, didBecomeAvailable)
+            return ("", didCheckedIn, didBecomeAvailable)
         case .available:
             return ("Я пойду", didCheckedIn, nil)
         case .checkedIn:
@@ -105,14 +105,20 @@ class EventCoordinator: Coordinator {
     }
 
     func didBecomeAvailable(event: Event) {
-        dump(event)
+        let viewController = navigationController.visibleViewController
+        guard let eventVC = viewController as? EventViewController else { return }
+        eventVC.eventType = .available
+        eventVC.barButtonAction = didCheckedIn
+        eventVC.cells![1] = .date(date: event.date, isEditable: false)
     }
 
     func setupEventViewController(as type: EventType) {
-        guard type == .creating || type == .available else { return }
+        guard type == .checkedIn || type == .available else { return }
         let viewController = navigationController.visibleViewController
         guard let eventVC = viewController as? EventViewController else { return }
         let (title, callback, _) = getBarButtonTitleAndCallbacks(for: type)
+        if eventVC.cells?.count == 3 { eventVC.cells?.remove(at: 2) }
+        eventVC.groupmates = groupmates
         eventVC.barButtonTitle = title
         eventVC.barButtonAction = callback
     }

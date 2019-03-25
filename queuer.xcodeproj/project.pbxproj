@@ -25,6 +25,8 @@
 		92C20F7A224909B00099209C /* EventTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C20F79224909B00099209C /* EventTableViewHelper.swift */; };
 		92C20F7C22491E950099209C /* EventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C20F7B22491E950099209C /* EventCoordinator.swift */; };
 		92C20F7E22491EA70099209C /* InfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C20F7D22491EA70099209C /* InfoCoordinator.swift */; };
+		92C20F83224936170099209C /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C20F81224936170099209C /* ButtonTableViewCell.swift */; };
+		92C20F84224936170099209C /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92C20F82224936170099209C /* ButtonTableViewCell.xib */; };
 		92DDB48F22402AAF00CC9FF6 /* LoginViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB48E22402AAF00CC9FF6 /* LoginViewBuilder.swift */; };
 		92DDB4912240E49100CC9FF6 /* LoginViewGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB4902240E49100CC9FF6 /* LoginViewGenerator.swift */; };
 		92DDB49422413A4200CC9FF6 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49322413A4200CC9FF6 /* EventsViewController.swift */; };
@@ -86,6 +88,8 @@
 		92C20F79224909B00099209C /* EventTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewHelper.swift; sourceTree = "<group>"; };
 		92C20F7B22491E950099209C /* EventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCoordinator.swift; sourceTree = "<group>"; };
 		92C20F7D22491EA70099209C /* InfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCoordinator.swift; sourceTree = "<group>"; };
+		92C20F81224936170099209C /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		92C20F82224936170099209C /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
 		92DDB48E22402AAF00CC9FF6 /* LoginViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewBuilder.swift; sourceTree = "<group>"; };
 		92DDB4902240E49100CC9FF6 /* LoginViewGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewGenerator.swift; sourceTree = "<group>"; };
 		92DDB49322413A4200CC9FF6 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 				92E54B792245313800817C95 /* DateTableViewCell.xib */,
 				92E54B7C224534BA00817C95 /* BigTextTableViewCell.swift */,
 				92E54B7D224534BA00817C95 /* BigTextTableViewCell.xib */,
+				92C20F81224936170099209C /* ButtonTableViewCell.swift */,
+				92C20F82224936170099209C /* ButtonTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -210,8 +216,8 @@
 		92C20F80224927F40099209C /* Events scene */ = {
 			isa = PBXGroup;
 			children = (
-				92C20F7B22491E950099209C /* EventCoordinator.swift */,
 				92DDB49322413A4200CC9FF6 /* EventsViewController.swift */,
+				92C20F7B22491E950099209C /* EventCoordinator.swift */,
 				92E54B80224536BA00817C95 /* EventViewController.swift */,
 				92C20F79224909B00099209C /* EventTableViewHelper.swift */,
 				928999E92242C17600A722AD /* Cells */,
@@ -353,6 +359,7 @@
 				928999DE2242C11800A722AD /* EventTableViewCell.xib in Resources */,
 				92773D9F2240003400CFAE44 /* LoginField.xib in Resources */,
 				92EFBD9C22401162004193D3 /* LoginButton.xib in Resources */,
+				92C20F84224936170099209C /* ButtonTableViewCell.xib in Resources */,
 				92773D87223FF7B700CFAE44 /* LaunchScreen.storyboard in Resources */,
 				92773D84223FF7B700CFAE44 /* Assets.xcassets in Resources */,
 				92E54B732244DBB800817C95 /* EditableTableViewCell.xib in Resources */,
@@ -395,6 +402,7 @@
 				92C20F7C22491E950099209C /* EventCoordinator.swift in Sources */,
 				928999DD2242C11800A722AD /* EventTableViewCell.swift in Sources */,
 				928999DA2242BD8500A722AD /* Event.swift in Sources */,
+				92C20F83224936170099209C /* ButtonTableViewCell.swift in Sources */,
 				92773D7F223FF7B500CFAE44 /* LoginViewController.swift in Sources */,
 				92DDB49B22421E2D00CC9FF6 /* CoordinatorUtil.swift in Sources */,
 				92DDB49422413A4200CC9FF6 /* EventsViewController.swift in Sources */,
