@@ -17,7 +17,7 @@ enum CoordinatorType {
         case .login:
             return LoginCoordinator.init
         case .event:
-            return EventCoordinator.init
+            return MainCoordinator.init
         }
     }
 }

@@ -16,7 +16,7 @@ protocol Coordinator {
     init(_ navigationController: UINavigationController)
 }
 
-class MainCoordinator: Coordinator {
+class AppCoordinator: Coordinator {
     private weak var navigationController: UINavigationController?
 
     var completenceCallback: (() -> Void)?

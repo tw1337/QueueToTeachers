@@ -2,7 +2,7 @@
 //  EventCoordinator.swift
 //  queuer
 //
-//  Created by Денис on 19/03/2019.
+//  Created by Денис on 25/03/2019.
 //  Copyright © 2019 Денис. All rights reserved.
 //
 
@@ -12,73 +12,34 @@ import UIKit
 class EventCoordinator: Coordinator {
     private var navigationController: UINavigationController
 
-    private var eventsNavigationController: UINavigationController?
-
-    private var userInfoNavigationController: UINavigationController?
-
-    var userInfoUpdatedAction: ((UserInfo) -> Void)?
-    var groupmatesUpdatedAction: (([Groupmate]) -> Void)?
-
-    var userInfo = UserInfo(name: "asa", group: "11") {
-        didSet {
-            userInfoUpdatedAction?(userInfo)
-        }
-    }
-
     var groupmates = [Groupmate(name: "11", position: 1), Groupmate(name: "12ada", position: 2)] {
         didSet {
             groupmatesUpdatedAction?(groupmates)
         }
     }
 
+    var groupmatesUpdatedAction: (([Groupmate]) -> Void)?
+
+    func start() {
+    }
+
     var childCoordinators: [Coordinator]?
 
     var completenceCallback: (() -> Void)?
 
-    required init(_ navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-
-    func start() {
-        showTabBar()
-    }
-
-    fileprivate func setupEventsViewController(_ storyboard: UIStoryboard) {
-        eventsNavigationController = storyboard.instantiateViewController(withIdentifier: "events") as? UINavigationController
-        guard let eventsVC = eventsNavigationController?.viewControllers.first as? EventsViewController else { return }
+    fileprivate func setupEventsViewController(_ eventsVC: EventsViewController) {
         eventsVC.plusCallback = createNewEvent
         eventsVC.selectCallback = didSelect
     }
 
-    fileprivate func setupUserInfoViewController(_ storyboard: UIStoryboard) {
-        userInfoNavigationController = storyboard.instantiateViewController(withIdentifier: "info") as? UINavigationController
-        guard let infoVC = userInfoNavigationController?.viewControllers.first as? UserInfoViewController else { return }
-        infoVC.logoutCallback = didLogout
-        infoVC.info = userInfo
-        infoVC.groupmates = groupmates
-        infoVC.userInfoSelectedCallback = {
-            if $1 == .name {
-                self.userInfo.name = $0
-            } else {
-                self.userInfo.group = $0
-            }
-        }
-    }
-
-    func showTabBar() {
-        let storyboard = UIStoryboard(name: "Events", bundle: nil)
-        setupEventsViewController(storyboard)
-        setupUserInfoViewController(storyboard)
-        let tabBar = UITabBarController()
-        tabBar.viewControllers = ([eventsNavigationController, userInfoNavigationController] as! [UIViewController])
-        navigationController.setViewControllers([tabBar], animated: true)
+    required init(_ navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        guard let eventsVC = navigationController.viewControllers.first as? EventsViewController else { return }
+        setupEventsViewController(eventsVC)
     }
 
     func createNewEvent() {
         showEventViewController(Event(name: "", date: Date(timeIntervalSinceNow: 0)), .creating)
-    }
-
-    func didLogout() {
     }
 
     func didSelect(event: Event, of type: EventType) {
@@ -89,12 +50,12 @@ class EventCoordinator: Coordinator {
         let eventViewController = EventViewController()
         eventViewController.cells = getCells(for: event, of: type)
         setupController(type, eventViewController, event)
-        eventsNavigationController?.pushViewController(eventViewController, animated: true)
+        navigationController.pushViewController(eventViewController, animated: true)
     }
 
     private func setupController(_ type: EventType, _ eventViewController: EventViewController, _ event: Event) {
         if type == .available || type == .checkedIn {
-            eventViewController.groupmates = groupmates
+            eventViewController.groupmates = []
         }
         eventViewController.title = type != .creating ? event.name : "Создание"
         let (barTitle, action, invalidateCallback) = getBarButtonTitleAndCallbacks(for: type)
@@ -130,7 +91,7 @@ class EventCoordinator: Coordinator {
 
     func didCreated(event: inout Event) {
         // TODO: Show created view
-        eventsNavigationController?.popViewController(animated: true)
+        navigationController.popViewController(animated: true)
     }
 
     func didCheckedIn(event: inout Event) {
@@ -149,7 +110,7 @@ class EventCoordinator: Coordinator {
 
     func setupEventViewController(as type: EventType) {
         guard type == .creating || type == .available else { return }
-        let viewController = eventsNavigationController?.visibleViewController
+        let viewController = navigationController.visibleViewController
         guard let eventVC = viewController as? EventViewController else { return }
         let (title, callback, _) = getBarButtonTitleAndCallbacks(for: type)
         eventVC.barButtonTitle = title

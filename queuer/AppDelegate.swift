@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func prepareCoordinator(_ navigationController: UINavigationController) {
-        coordinator = MainCoordinator(navigationController)
+        coordinator = AppCoordinator(navigationController)
         let childCoordinatorMaker = CoordinatorMaker(navigationController)
         coordinator.childCoordinators = prepareChildCoordinators(childCoordinatorMaker)
     }

@@ -13,6 +13,9 @@ enum EventCellType {
 }
 
 class EventViewController: UIViewController {
+    
+    // MARK: Properties
+    
     var barButtonTitle: String! {
         didSet {
             navigationItem.rightBarButtonItem?.title = barButtonTitle
@@ -34,6 +37,8 @@ class EventViewController: UIViewController {
 
     let helper = EventTableViewHelper()
 
+    // MARK: Computed properties
+    
     var eventName: String {
         let cell = tableView.cellForRow(at: nameIndexPath!)
         guard let nameCell = cell as? EditableTableViewCell else { return "" }
@@ -50,6 +55,8 @@ class EventViewController: UIViewController {
     var tableView: UITableView! {
         return (self.view as! UITableView)
     }
+    
+    // MARK: View lifecycle
 
     override func loadView() {
         view = UITableView()
@@ -66,6 +73,8 @@ class EventViewController: UIViewController {
         username = UserDefaults.standard.string(forKey: "username")
         setupDelegate()
     }
+    
+    // MARK: Action handlers
 
     @objc func updateCells() {
         guard let indexPath = bigCellIndexPath else { return }
@@ -94,6 +103,8 @@ class EventViewController: UIViewController {
         guard eventType == .checkedIn || eventType == .available else { return }
         usernameIndexPath != nil ? checkin() : checkout()
     }
+    
+    // MARK: Private Implementation
 
     private func setupDelegate() {
         helper.controller = self
@@ -140,7 +151,7 @@ class EventViewController: UIViewController {
         }
     }
 
-    func createEvent() -> Event {
+    private func createEvent() -> Event {
         return Event(name: eventName, date: eventDate)
     }
 }

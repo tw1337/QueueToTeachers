@@ -16,3 +16,10 @@ extension UITableView {
         register(nib, forCellReuseIdentifier: describingString)
     }
 }
+
+extension UITableView {
+    func dequeueReusableCell<T: UITableViewCell>(of type: T.Type, for indexPath: IndexPath) -> T {
+        let cell = dequeueReusableCell(withIdentifier: String(describing: type), for: indexPath)
+        return cell as! T
+    }
+}

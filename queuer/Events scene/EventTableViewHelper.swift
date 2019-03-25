@@ -18,6 +18,8 @@ class EventTableViewHelper: NSObject {
     var dateCell: DateTableViewCell?
 }
 
+// MARK: - TableView datasource
+
 extension EventTableViewHelper: UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let subview = UIView(frame: view.bounds)
@@ -61,6 +63,14 @@ extension EventTableViewHelper: UITableViewDataSource {
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cell = tableView.cellForRow(at: indexPath)
+        guard cell is BigTextTableViewCell || indexPath == controller.datePickerIndexPath else { return tableView.rowHeight }
+        return 320
+    }
+    
+    // MARK: cellForRowAt methods
 
     func getInfoCell(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         switch controller.cells![indexPath.row] {
@@ -102,12 +112,6 @@ extension EventTableViewHelper: UITableViewDataSource {
         return bigTextCell
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cell = tableView.cellForRow(at: indexPath)
-        guard cell is BigTextTableViewCell || indexPath == controller.datePickerIndexPath else { return tableView.rowHeight }
-        return 320
-    }
-
     func getDateCell(_ tableView: UITableView, _ indexPath: IndexPath, _ date: Date?, _ isEditable: Bool) -> UITableViewCell {
         let dateCell = tableView.dequeueReusableCell(of: DateTableViewCell.self, for: indexPath)
         controller.dateIndexPath = indexPath
@@ -126,6 +130,8 @@ extension EventTableViewHelper: UITableViewDataSource {
         return editableCell
     }
 }
+
+// MARK: - TableView delegate
 
 extension EventTableViewHelper: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -154,15 +160,12 @@ extension EventTableViewHelper: UITableViewDelegate {
     }
 }
 
+// MARK: - DatePickerDalegate
+
 extension EventTableViewHelper: DatePickerDelegate {
     func didValueChange(_ newValue: Date) {
         dateCell?.date = newValue
     }
 }
 
-extension UITableView {
-    func dequeueReusableCell<T: UITableViewCell>(of type: T.Type, for indexPath: IndexPath) -> T {
-        let cell = dequeueReusableCell(withIdentifier: String(describing: type), for: indexPath)
-        return cell as! T
-    }
-}
+

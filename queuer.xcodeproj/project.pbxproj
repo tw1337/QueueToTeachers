@@ -21,13 +21,15 @@
 		928999DA2242BD8500A722AD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999D92242BD8500A722AD /* Event.swift */; };
 		928999DD2242C11800A722AD /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999DB2242C11800A722AD /* EventTableViewCell.swift */; };
 		928999DE2242C11800A722AD /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928999DC2242C11800A722AD /* EventTableViewCell.xib */; };
-		928999EB2242C3F100A722AD /* TableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999EA2242C3F100A722AD /* TableView+Register.swift */; };
+		928999EB2242C3F100A722AD /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999EA2242C3F100A722AD /* UITableView.swift */; };
 		92C20F7A224909B00099209C /* EventTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C20F79224909B00099209C /* EventTableViewHelper.swift */; };
+		92C20F7C22491E950099209C /* EventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C20F7B22491E950099209C /* EventCoordinator.swift */; };
+		92C20F7E22491EA70099209C /* InfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C20F7D22491EA70099209C /* InfoCoordinator.swift */; };
 		92DDB48F22402AAF00CC9FF6 /* LoginViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB48E22402AAF00CC9FF6 /* LoginViewBuilder.swift */; };
 		92DDB4912240E49100CC9FF6 /* LoginViewGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB4902240E49100CC9FF6 /* LoginViewGenerator.swift */; };
 		92DDB49422413A4200CC9FF6 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49322413A4200CC9FF6 /* EventsViewController.swift */; };
-		92DDB49722413B4C00CC9FF6 /* EventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49622413B4C00CC9FF6 /* EventCoordinator.swift */; };
-		92DDB49922421ABA00CC9FF6 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49822421ABA00CC9FF6 /* MainCoordinator.swift */; };
+		92DDB49722413B4C00CC9FF6 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49622413B4C00CC9FF6 /* MainCoordinator.swift */; };
+		92DDB49922421ABA00CC9FF6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49822421ABA00CC9FF6 /* AppCoordinator.swift */; };
 		92DDB49B22421E2D00CC9FF6 /* CoordinatorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49A22421E2D00CC9FF6 /* CoordinatorUtil.swift */; };
 		92DDB49D224227BE00CC9FF6 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DDB49C224227BE00CC9FF6 /* Events.storyboard */; };
 		92DDB49F2242285800CC9FF6 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49E2242285800CC9FF6 /* UserInfoViewController.swift */; };
@@ -80,13 +82,15 @@
 		928999D92242BD8500A722AD /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		928999DB2242C11800A722AD /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		928999DC2242C11800A722AD /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
-		928999EA2242C3F100A722AD /* TableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Register.swift"; sourceTree = "<group>"; };
+		928999EA2242C3F100A722AD /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		92C20F79224909B00099209C /* EventTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewHelper.swift; sourceTree = "<group>"; };
+		92C20F7B22491E950099209C /* EventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCoordinator.swift; sourceTree = "<group>"; };
+		92C20F7D22491EA70099209C /* InfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCoordinator.swift; sourceTree = "<group>"; };
 		92DDB48E22402AAF00CC9FF6 /* LoginViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewBuilder.swift; sourceTree = "<group>"; };
 		92DDB4902240E49100CC9FF6 /* LoginViewGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewGenerator.swift; sourceTree = "<group>"; };
 		92DDB49322413A4200CC9FF6 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
-		92DDB49622413B4C00CC9FF6 /* EventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCoordinator.swift; sourceTree = "<group>"; };
-		92DDB49822421ABA00CC9FF6 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		92DDB49622413B4C00CC9FF6 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		92DDB49822421ABA00CC9FF6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		92DDB49A22421E2D00CC9FF6 /* CoordinatorUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorUtil.swift; sourceTree = "<group>"; };
 		92DDB49C224227BE00CC9FF6 /* Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
 		92DDB49E2242285800CC9FF6 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
@@ -151,11 +155,12 @@
 			isa = PBXGroup;
 			children = (
 				92773D7C223FF7B500CFAE44 /* AppDelegate.swift */,
-				92DDB49822421ABA00CC9FF6 /* MainCoordinator.swift */,
+				92DDB49822421ABA00CC9FF6 /* AppCoordinator.swift */,
 				92DDB49A22421E2D00CC9FF6 /* CoordinatorUtil.swift */,
 				92DDB49222413A2300CC9FF6 /* Login scene */,
 				928999D82242BD6F00A722AD /* Models */,
 				92DDB49522413B2F00CC9FF6 /* Main scene */,
+				92C20F80224927F40099209C /* Events scene */,
 				92773D83223FF7B700CFAE44 /* Assets.xcassets */,
 				92773D85223FF7B700CFAE44 /* LaunchScreen.storyboard */,
 				92773D88223FF7B700CFAE44 /* Info.plist */,
@@ -202,6 +207,18 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		92C20F80224927F40099209C /* Events scene */ = {
+			isa = PBXGroup;
+			children = (
+				92C20F7B22491E950099209C /* EventCoordinator.swift */,
+				92DDB49322413A4200CC9FF6 /* EventsViewController.swift */,
+				92E54B80224536BA00817C95 /* EventViewController.swift */,
+				92C20F79224909B00099209C /* EventTableViewHelper.swift */,
+				928999E92242C17600A722AD /* Cells */,
+			);
+			path = "Events scene";
+			sourceTree = "<group>";
+		};
 		92DDB49222413A2300CC9FF6 /* Login scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,13 +234,10 @@
 		92DDB49522413B2F00CC9FF6 /* Main scene */ = {
 			isa = PBXGroup;
 			children = (
-				92DDB49622413B4C00CC9FF6 /* EventCoordinator.swift */,
-				92DDB49322413A4200CC9FF6 /* EventsViewController.swift */,
-				92E54B80224536BA00817C95 /* EventViewController.swift */,
-				92C20F79224909B00099209C /* EventTableViewHelper.swift */,
+				92DDB49622413B4C00CC9FF6 /* MainCoordinator.swift */,
+				92C20F7D22491EA70099209C /* InfoCoordinator.swift */,
 				92DDB49E2242285800CC9FF6 /* UserInfoViewController.swift */,
 				92DDB49C224227BE00CC9FF6 /* Events.storyboard */,
-				928999E92242C17600A722AD /* Cells */,
 			);
 			path = "Main scene";
 			sourceTree = "<group>";
@@ -235,7 +249,7 @@
 				92EFBD9522400AA4004193D3 /* UIViewController+Storyboard.swift */,
 				92EFBD9722400AF8004193D3 /* UIView+nib.swift */,
 				92EFBD9F22401726004193D3 /* Colors.swift */,
-				928999EA2242C3F100A722AD /* TableView+Register.swift */,
+				928999EA2242C3F100A722AD /* UITableView.swift */,
 				92E54B662243C39800817C95 /* Date+Expired.swift */,
 			);
 			path = Extensions;
@@ -366,8 +380,9 @@
 				92E54B672243C39800817C95 /* Date+Expired.swift in Sources */,
 				92DDB49F2242285800CC9FF6 /* UserInfoViewController.swift in Sources */,
 				92E54B722244DBB800817C95 /* EditableTableViewCell.swift in Sources */,
-				928999EB2242C3F100A722AD /* TableView+Register.swift in Sources */,
-				92DDB49922421ABA00CC9FF6 /* MainCoordinator.swift in Sources */,
+				928999EB2242C3F100A722AD /* UITableView.swift in Sources */,
+				92DDB49922421ABA00CC9FF6 /* AppCoordinator.swift in Sources */,
+				92C20F7E22491EA70099209C /* InfoCoordinator.swift in Sources */,
 				92773DA12240004900CFAE44 /* LoginField.swift in Sources */,
 				92EFBDA022401726004193D3 /* Colors.swift in Sources */,
 				92E54B65224391C100817C95 /* DateCounter.swift in Sources */,
@@ -377,12 +392,13 @@
 				92E54B762244E70000817C95 /* DatePickerTableViewCell.swift in Sources */,
 				92E54B7E224534BA00817C95 /* BigTextTableViewCell.swift in Sources */,
 				92EFBD9E2240118C004193D3 /* LoginButton.swift in Sources */,
+				92C20F7C22491E950099209C /* EventCoordinator.swift in Sources */,
 				928999DD2242C11800A722AD /* EventTableViewCell.swift in Sources */,
 				928999DA2242BD8500A722AD /* Event.swift in Sources */,
 				92773D7F223FF7B500CFAE44 /* LoginViewController.swift in Sources */,
 				92DDB49B22421E2D00CC9FF6 /* CoordinatorUtil.swift in Sources */,
 				92DDB49422413A4200CC9FF6 /* EventsViewController.swift in Sources */,
-				92DDB49722413B4C00CC9FF6 /* EventCoordinator.swift in Sources */,
+				92DDB49722413B4C00CC9FF6 /* MainCoordinator.swift in Sources */,
 				92773D7D223FF7B500CFAE44 /* AppDelegate.swift in Sources */,
 				92DDB4A32242620200CC9FF6 /* Groupmate.swift in Sources */,
 				92773D9D223FFBEE00CFAE44 /* LoginCoordinator.swift in Sources */,
