@@ -32,6 +32,8 @@ class EventViewController: UIViewController {
     var bigCellIndexPath: IndexPath?
     var usernameIndexPath: IndexPath?
 
+    let helper = EventTableViewHelper()
+
     var eventName: String {
         let cell = tableView.cellForRow(at: nameIndexPath!)
         guard let nameCell = cell as? EditableTableViewCell else { return "" }
@@ -61,7 +63,7 @@ class EventViewController: UIViewController {
         let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCells), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
         NotificationCenter.default.addObserver(self, selector: #selector(didInvalidated), name: .invalidated, object: nil)
-
+        username = UserDefaults.standard.string(forKey: "username")
         setupDelegate()
     }
 
@@ -94,9 +96,7 @@ class EventViewController: UIViewController {
     }
 
     private func setupDelegate() {
-        let context = EventTableContext()
-        context.context = (nameIndexPath, usernameIndexPath, dateIndexPath, bigCellIndexPath, datePickerIndexPath, cells, groupmates)
-        let helper = EventTableViewHelper(context: context)
+        helper.controller = self
         tableView.dataSource = helper
         tableView.delegate = helper
     }

@@ -14,21 +14,8 @@ class EventTableContext {
 }
 
 class EventTableViewHelper: NSObject {
-    var nameIndexPath: IndexPath?
-    var dateIndexPath: IndexPath?
-    var datePickerIndexPath: IndexPath?
-    var bigCellIndexPath: IndexPath?
-    var usernameIndexPath: IndexPath?
-    let username = UserDefaults.standard.string(forKey: "username")
-    var cells: [EventCellType]?
-    var groupmates: [Groupmate]?
-
+    weak var controller: EventViewController!
     var dateCell: DateTableViewCell?
-
-    init(context: EventTableContext) {
-        super.init()
-        (nameIndexPath, usernameIndexPath, dateIndexPath, bigCellIndexPath, datePickerIndexPath, cells, groupmates) = context.context
-    }
 }
 
 extension EventTableViewHelper: UITableViewDataSource {
@@ -39,16 +26,16 @@ extension EventTableViewHelper: UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return groupmates != nil ? 2 : 1
+        return controller.groupmates != nil ? 2 : 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch EventSections(rawValue: section)! {
         case .info:
-            let count = cells!.count
-            return count + (datePickerIndexPath != nil ? 1 : 0)
+            let count = controller.cells!.count
+            return count + (controller.datePickerIndexPath != nil ? 1 : 0)
         case .groupmates:
-            return groupmates?.count ?? 0
+            return controller.groupmates?.count ?? 0
         }
     }
 
@@ -62,7 +49,7 @@ extension EventTableViewHelper: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if datePickerIndexPath == indexPath {
+        if controller.datePickerIndexPath == indexPath {
             let pickerCell = tableView.dequeueReusableCell(of: DatePickerTableViewCell.self, for: indexPath)
             return setupPickerCell(tableView, pickerCell)
         } else {
@@ -76,7 +63,7 @@ extension EventTableViewHelper: UITableViewDataSource {
     }
 
     func getInfoCell(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
-        switch cells![indexPath.row] {
+        switch controller.cells![indexPath.row] {
         case let .bigText(date):
             return getBigTextCell(tableView, indexPath, date)
         case let .date(date, isEditable):
@@ -97,12 +84,12 @@ extension EventTableViewHelper: UITableViewDataSource {
         if cell == nil {
             cell = UITableViewCell(style: .value1, reuseIdentifier: "1")
         }
-        let groupmate = groupmates![indexPath.row]
+        let groupmate = controller.groupmates![indexPath.row]
         cell?.textLabel?.text = groupmate.name
         cell?.detailTextLabel?.text = String(groupmate.position)
         cell?.isUserInteractionEnabled = false
-        if username == groupmate.name {
-            usernameIndexPath = indexPath
+        if controller.username == groupmate.name {
+            controller.usernameIndexPath = indexPath
             cell?.textLabel?.textColor = UIColor(named: "accent-color")
         }
         return cell!
@@ -111,19 +98,19 @@ extension EventTableViewHelper: UITableViewDataSource {
     func getBigTextCell(_ tableView: UITableView, _ indexPath: IndexPath, _ date: Date) -> UITableViewCell {
         let bigTextCell = tableView.dequeueReusableCell(of: BigTextTableViewCell.self, for: indexPath)
         bigTextCell.dateCounter = DateCounter(date: date)
-        bigCellIndexPath = indexPath
+        controller.bigCellIndexPath = indexPath
         return bigTextCell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell = tableView.cellForRow(at: indexPath)
-        guard cell is BigTextTableViewCell || indexPath == datePickerIndexPath else { return tableView.rowHeight }
+        guard cell is BigTextTableViewCell || indexPath == controller.datePickerIndexPath else { return tableView.rowHeight }
         return 320
     }
 
     func getDateCell(_ tableView: UITableView, _ indexPath: IndexPath, _ date: Date?, _ isEditable: Bool) -> UITableViewCell {
         let dateCell = tableView.dequeueReusableCell(of: DateTableViewCell.self, for: indexPath)
-        dateIndexPath = indexPath
+        controller.dateIndexPath = indexPath
         dateCell.titleLabel.text = "Начало"
         dateCell.date = date ?? Date(timeIntervalSinceNow: 60 * 5)
         dateCell.isUserInteractionEnabled = isEditable
@@ -133,7 +120,7 @@ extension EventTableViewHelper: UITableViewDataSource {
 
     func getNameCell(_ tableView: UITableView, _ indexPath: IndexPath, _ text: String, _ isEditable: Bool) -> UITableViewCell {
         let editableCell = tableView.dequeueReusableCell(of: EditableTableViewCell.self, for: indexPath)
-        nameIndexPath = indexPath
+        controller.nameIndexPath = indexPath
         editableCell.textField.text = text
         editableCell.isUserInteractionEnabled = isEditable
         return editableCell
@@ -144,22 +131,22 @@ extension EventTableViewHelper: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard tableView.cellForRow(at: indexPath) is DateTableViewCell else { return }
         tableView.beginUpdates()
-        if let datePickerIndexPath = datePickerIndexPath, datePickerIndexPath.row - 1 == indexPath.row {
+        if let datePickerIndexPath = controller.datePickerIndexPath, datePickerIndexPath.row - 1 == indexPath.row {
             tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
-            self.datePickerIndexPath = nil
+            controller.datePickerIndexPath = nil
         } else {
-            if let datePickerIndexPath = datePickerIndexPath {
+            if let datePickerIndexPath = controller.datePickerIndexPath {
                 tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
             }
-            datePickerIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
-            tableView.insertRows(at: [datePickerIndexPath!], with: .fade)
+            controller.datePickerIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
+            tableView.insertRows(at: [controller.datePickerIndexPath!], with: .fade)
             tableView.deselectRow(at: indexPath, animated: true)
         }
         tableView.endUpdates()
     }
 
     func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
-        if let datePickerIndexPath = datePickerIndexPath, datePickerIndexPath.row < indexPath.row {
+        if let datePickerIndexPath = controller.datePickerIndexPath, datePickerIndexPath.row < indexPath.row {
             return indexPath
         } else {
             return IndexPath(row: indexPath.row + 1, section: indexPath.section)
