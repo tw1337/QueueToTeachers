@@ -11,7 +11,6 @@ import UIKit
 
 class MainCoordinator: Coordinator {
     private var navigationController: UINavigationController
-    private var eventsNavigationController: UINavigationController?
 
     var childCoordinators: [Coordinator]?
     var childNavigationControllers = [UINavigationController]()
@@ -26,7 +25,7 @@ class MainCoordinator: Coordinator {
         childCoordinators = [Coordinator]()
         setupEventsCoordinator(storyboard)
         setupUserInfoCoordinator(storyboard)
-        tabBar.viewControllers = (childNavigationControllers as! [UIViewController])
+        tabBar.viewControllers = (childNavigationControllers as [UIViewController])
     }
 
     func showTabBar() {
@@ -38,9 +37,9 @@ class MainCoordinator: Coordinator {
     }
 
     private func setupEventsCoordinator(_ storyboard: UIStoryboard) {
-        eventsNavigationController = storyboard.instantiateViewController(withIdentifier: "events") as! UINavigationController
-        let eventsCoordinator = EventCoordinator(eventsNavigationController!)
-        childNavigationControllers.append(eventsNavigationController!)
+        let eventsNavigationController = storyboard.instantiateViewController(withIdentifier: "events") as! UINavigationController
+        let eventsCoordinator = EventCoordinator(eventsNavigationController)
+        childNavigationControllers.append(eventsNavigationController)
         childCoordinators?.append(eventsCoordinator)
     }
 
