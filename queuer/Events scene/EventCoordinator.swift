@@ -12,7 +12,7 @@ import UIKit
 class EventCoordinator: Coordinator {
     private var navigationController: UINavigationController
 
-    var groupmates = [Groupmate(name: "11", position: 1), Groupmate(name: "12ada", position: 2)] {
+    var groupmates = [Groupmate(name: "111", position: 1), Groupmate(name: "12ada", position: 2)] {
         didSet {
             groupmatesUpdatedAction?(groupmates)
         }
@@ -54,8 +54,12 @@ class EventCoordinator: Coordinator {
     }
 
     private func setupController(_ type: EventType, _ eventViewController: EventViewController, _ event: Event) {
-        if type == .available || type == .checkedIn {
-            eventViewController.groupmates = []
+        if type == .available {
+            eventViewController.groupmates = groupmates
+            if type == .checkedIn {
+                eventViewController.groupmates?.append(Groupmate(name: "11", position: 3))
+                eventViewController.groupmates?.append(Groupmate(name: "123", position: 4))
+            }
         }
         eventViewController.title = type != .creating ? event.name : "Создание"
         let (barTitle, action, invalidateCallback) = getBarButtonTitleAndCallbacks(for: type)
@@ -118,7 +122,9 @@ class EventCoordinator: Coordinator {
         guard let eventVC = viewController as? EventViewController else { return }
         let (title, callback, _) = getBarButtonTitleAndCallbacks(for: type)
         if eventVC.cells?.count == 3 { eventVC.cells?.remove(at: 2) }
-        eventVC.groupmates = groupmates
+        if eventVC.groupmates == nil {
+            eventVC.groupmates = groupmates
+        }
         eventVC.barButtonTitle = title
         eventVC.barButtonAction = callback
     }
