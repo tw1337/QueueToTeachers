@@ -129,15 +129,16 @@ class EventCoordinator: Coordinator {
     }
 
     func didCreated(event: inout Event) {
+        // TODO: Show created view
         eventsNavigationController?.popViewController(animated: true)
     }
 
-    func didCheckedIn( event: inout Event) {
+    func didCheckedIn(event: inout Event) {
         event.checkedIn = true
         setupEventViewController(as: .checkedIn)
     }
 
-    func didUnchecked( event: inout Event) {
+    func didUnchecked(event: inout Event) {
         event.checkedIn = false
         setupEventViewController(as: .available)
     }
@@ -147,6 +148,7 @@ class EventCoordinator: Coordinator {
     }
 
     func setupEventViewController(as type: EventType) {
+        guard type == .creating || type == .available else { return }
         let viewController = eventsNavigationController?.visibleViewController
         guard let eventVC = viewController as? EventViewController else { return }
         let (title, callback, _) = getBarButtonTitleAndCallbacks(for: type)

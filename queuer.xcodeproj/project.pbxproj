@@ -22,6 +22,7 @@
 		928999DD2242C11800A722AD /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999DB2242C11800A722AD /* EventTableViewCell.swift */; };
 		928999DE2242C11800A722AD /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928999DC2242C11800A722AD /* EventTableViewCell.xib */; };
 		928999EB2242C3F100A722AD /* TableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928999EA2242C3F100A722AD /* TableView+Register.swift */; };
+		92C20F7A224909B00099209C /* EventTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C20F79224909B00099209C /* EventTableViewHelper.swift */; };
 		92DDB48F22402AAF00CC9FF6 /* LoginViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB48E22402AAF00CC9FF6 /* LoginViewBuilder.swift */; };
 		92DDB4912240E49100CC9FF6 /* LoginViewGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB4902240E49100CC9FF6 /* LoginViewGenerator.swift */; };
 		92DDB49422413A4200CC9FF6 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DDB49322413A4200CC9FF6 /* EventsViewController.swift */; };
@@ -80,6 +81,7 @@
 		928999DB2242C11800A722AD /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		928999DC2242C11800A722AD /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		928999EA2242C3F100A722AD /* TableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Register.swift"; sourceTree = "<group>"; };
+		92C20F79224909B00099209C /* EventTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewHelper.swift; sourceTree = "<group>"; };
 		92DDB48E22402AAF00CC9FF6 /* LoginViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewBuilder.swift; sourceTree = "<group>"; };
 		92DDB4902240E49100CC9FF6 /* LoginViewGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewGenerator.swift; sourceTree = "<group>"; };
 		92DDB49322413A4200CC9FF6 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				92DDB49622413B4C00CC9FF6 /* EventCoordinator.swift */,
 				92DDB49322413A4200CC9FF6 /* EventsViewController.swift */,
 				92E54B80224536BA00817C95 /* EventViewController.swift */,
+				92C20F79224909B00099209C /* EventTableViewHelper.swift */,
 				92DDB49E2242285800CC9FF6 /* UserInfoViewController.swift */,
 				92DDB49C224227BE00CC9FF6 /* Events.storyboard */,
 				928999E92242C17600A722AD /* Cells */,
@@ -369,6 +372,7 @@
 				92EFBDA022401726004193D3 /* Colors.swift in Sources */,
 				92E54B65224391C100817C95 /* DateCounter.swift in Sources */,
 				92E54B81224536BA00817C95 /* EventViewController.swift in Sources */,
+				92C20F7A224909B00099209C /* EventTableViewHelper.swift in Sources */,
 				92E54B7A2245313800817C95 /* DateTableViewCell.swift in Sources */,
 				92E54B762244E70000817C95 /* DatePickerTableViewCell.swift in Sources */,
 				92E54B7E224534BA00817C95 /* BigTextTableViewCell.swift in Sources */,
