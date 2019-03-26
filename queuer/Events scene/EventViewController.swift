@@ -64,6 +64,7 @@ class EventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        UserDefaults.standard.set("11", forKey: "username")
         setup()
     }
 
@@ -86,7 +87,7 @@ class EventViewController: UIViewController {
     }
 
     @objc func didInvalidate() {
-        guard event.date.isExpired else { return }
+        guard eventType == .new, event.date.isExpired else { return }
         NotificationCenter.default.removeObserver(self, name: .invalidated, object: nil)
         navigationItem.rightBarButtonItem?.isEnabled = true
         isInvalidated = true

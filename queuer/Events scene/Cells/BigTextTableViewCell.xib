@@ -21,10 +21,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4д 8ч 10мин 40сек" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEl-bl-hWz">
-                        <rect key="frame" x="16" y="34" width="343" height="252"/>
+                        <rect key="frame" x="62.5" y="34" width="250" height="252"/>
                         <color key="tintColor" name="accent-color"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="252" id="Qd1-yt-0EU"/>
+                            <constraint firstAttribute="width" constant="250" id="nHd-mn-fDL"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="64"/>
                         <color key="textColor" name="accent-color"/>
@@ -33,10 +34,11 @@
                 </subviews>
             </tableViewCellContentView>
             <constraints>
-                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="TEl-bl-hWz" secondAttribute="trailing" constant="16" id="AGy-hd-h0m"/>
-                <constraint firstItem="TEl-bl-hWz" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" constant="16" id="Dai-Mc-39Q"/>
-                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="TEl-bl-hWz" secondAttribute="bottom" constant="34" id="nqw-rg-ufk"/>
-                <constraint firstItem="TEl-bl-hWz" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" constant="34" id="nwC-xZ-KMq"/>
+                <constraint firstItem="TEl-bl-hWz" firstAttribute="centerX" secondItem="njF-e1-oar" secondAttribute="centerX" id="0nO-q2-PRI"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="TEl-bl-hWz" secondAttribute="trailing" priority="999" constant="16" id="AGy-hd-h0m"/>
+                <constraint firstItem="TEl-bl-hWz" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" priority="999" constant="16" id="Dai-Mc-39Q"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="TEl-bl-hWz" secondAttribute="bottom" priority="999" constant="34" id="nqw-rg-ufk"/>
+                <constraint firstItem="TEl-bl-hWz" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" priority="999" constant="34" id="nwC-xZ-KMq"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

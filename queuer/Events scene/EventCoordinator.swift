@@ -54,11 +54,11 @@ class EventCoordinator: Coordinator {
     }
 
     private func setupController(_ type: EventType, _ eventViewController: EventViewController, _ event: Event) {
-        if type == .available {
+        if type == .available || type == .checkedIn {
             eventViewController.groupmates = groupmates
             if type == .checkedIn {
-                eventViewController.groupmates?.append(Groupmate(name: "11", position: 3))
-                eventViewController.groupmates?.append(Groupmate(name: "123", position: 4))
+                eventViewController.groupmates!.append(Groupmate(name: "11", position: 3))
+                eventViewController.groupmates!.append(Groupmate(name: "123", position: 4))
             }
         }
         eventViewController.title = type != .creating ? event.name : "Создание"

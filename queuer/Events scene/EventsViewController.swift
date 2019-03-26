@@ -68,10 +68,9 @@ class EventsViewController: UIViewController {
     private func moveOutdated() {
         while let indexToMove = newEvents?.firstIndex(where: { $0.date.isExpired }) {
             let elementToMove = newEvents![indexToMove]
-            newEvents?.remove(at: indexToMove)
             let destination = IndexPath(row: availableEvents?.count ?? 1 - 1, section: 1)
+            newEvents?.remove(at: indexToMove)
             availableEvents?.append(elementToMove)
-
             tableView.moveRow(at: IndexPath(row: indexToMove, section: 0), to: destination)
         }
     }
