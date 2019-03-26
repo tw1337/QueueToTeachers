@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		924D1EA7224A36F600B1E31A /* IndexPathProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924D1EA6224A36F600B1E31A /* IndexPathProvider.swift */; };
 		92773D7D223FF7B500CFAE44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92773D7C223FF7B500CFAE44 /* AppDelegate.swift */; };
 		92773D7F223FF7B500CFAE44 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92773D7E223FF7B500CFAE44 /* LoginViewController.swift */; };
 		92773D82223FF7B500CFAE44 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92773D80223FF7B500CFAE44 /* LoginViewController.storyboard */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		924D1EA6224A36F600B1E31A /* IndexPathProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexPathProvider.swift; sourceTree = "<group>"; };
 		92773D79223FF7B500CFAE44 /* queuer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = queuer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92773D7C223FF7B500CFAE44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92773D7E223FF7B500CFAE44 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				92C20F7B22491E950099209C /* EventCoordinator.swift */,
 				92E54B80224536BA00817C95 /* EventViewController.swift */,
 				92C20F79224909B00099209C /* EventTableViewHelper.swift */,
+				924D1EA6224A36F600B1E31A /* IndexPathProvider.swift */,
 				928999E92242C17600A722AD /* Cells */,
 			);
 			path = "Events scene";
@@ -397,6 +400,7 @@
 				92C20F7A224909B00099209C /* EventTableViewHelper.swift in Sources */,
 				92E54B7A2245313800817C95 /* DateTableViewCell.swift in Sources */,
 				92E54B762244E70000817C95 /* DatePickerTableViewCell.swift in Sources */,
+				924D1EA7224A36F600B1E31A /* IndexPathProvider.swift in Sources */,
 				92E54B7E224534BA00817C95 /* BigTextTableViewCell.swift in Sources */,
 				92EFBD9E2240118C004193D3 /* LoginButton.swift in Sources */,
 				92C20F7C22491E950099209C /* EventCoordinator.swift in Sources */,

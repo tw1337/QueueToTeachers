@@ -21,32 +21,26 @@ class EventViewController: UIViewController {
         }
     }
 
-    var username = UserDefaults.standard.string(forKey: "username")
-
+    lazy var provider = IndexPathProvider(tableView: self.tableView)
     var barButtonAction: ((inout Event) -> Void)?
     var didInvalidatedCallback: ((Event) -> Void)?
     var cells: [EventCellType]?
     var groupmates: [Groupmate]?
     var event: Event!
     var eventType: EventType!
-    var nameIndexPath: IndexPath?
-    var dateIndexPath: IndexPath?
-    var datePickerIndexPath: IndexPath?
-    var bigCellIndexPath: IndexPath?
-    var usernameIndexPath: IndexPath?
     var isInvalidated = false
     let helper = EventTableViewHelper()
 
     // MARK: Computed properties
 
     var eventName: String {
-        let cell = tableView.cellForRow(at: nameIndexPath!)
+        let cell = tableView.cellForRow(at: provider.nameIndexPath!)
         guard let nameCell = cell as? EditableTableViewCell else { return "" }
         return nameCell.textField.text!
     }
 
     var eventDate: Date {
-        let cell = tableView.cellForRow(at: dateIndexPath!)
+        let cell = tableView.cellForRow(at: provider.dateIndexPath!)
         let fallbackDate = Date(timeIntervalSince1970: 0)
         guard let dateCell = cell as? DateTableViewCell else { return fallbackDate }
         return dateCell.date ?? fallbackDate
@@ -64,7 +58,7 @@ class EventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        UserDefaults.standard.set("11", forKey: "username")
+        UserDefaults.standard.set("11", forKey: "username")
         setup()
     }
 
@@ -80,7 +74,7 @@ class EventViewController: UIViewController {
     // MARK: Action handlers
 
     @objc func updateCells() {
-        guard let indexPath = bigCellIndexPath else { return }
+        guard let indexPath = provider.bigCellIndexPath else { return }
         let cell = tableView.cellForRow(at: indexPath)
         guard let bigTextCell = cell as? BigTextTableViewCell else { return }
         bigTextCell.update()
@@ -93,7 +87,7 @@ class EventViewController: UIViewController {
         isInvalidated = true
         let dateIndexPath = IndexPath(row: 1, section: 0)
         didInvalidatedCallback?(event!)
-        tableView.reloadRows(at: [dateIndexPath, bigCellIndexPath!], with: .fade)
+        tableView.reloadRows(at: [dateIndexPath, provider.bigCellIndexPath!], with: .fade)
     }
 
     @objc func didTap() {
@@ -106,14 +100,13 @@ class EventViewController: UIViewController {
         }
         barButtonAction?(&event!)
         guard eventType == .checkedIn || eventType == .available else { return }
-        if bigCellIndexPath != nil {
+        if let indexPath = provider.buttonIndexPath {
             tableView.beginUpdates()
             tableView.insertSections(IndexSet(integer: 1), with: .fade)
-            tableView.deleteRows(at: [bigCellIndexPath!], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
-            bigCellIndexPath = nil
         }
-        usernameIndexPath == nil ? checkin() : checkout()
+        provider.usernameIndexPath == nil ? checkin() : checkout()
     }
 
     // MARK: Private Implementation
@@ -153,18 +146,18 @@ class EventViewController: UIViewController {
 
     private func checkout() {
         guard !groupmates!.isEmpty else { return }
-        groupmates?.remove(at: usernameIndexPath!.row)
-        tableView.deleteRows(at: [usernameIndexPath!], with: .fade)
-        updateGroupmatePosition(usernameIndexPath!)
-        usernameIndexPath = nil
+        let indexPath = provider.usernameIndexPath!
+        groupmates?.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        updateGroupmatePosition(indexPath)
     }
 
     private func checkin() {
         let row = groupmates!.count
         let indexPath = IndexPath(row: row, section: EventSections.groupmates.rawValue)
+        let username = UserDefaults.standard.string(forKey: "username")
         groupmates!.append(Groupmate(name: username!, position: row + 1))
         tableView.insertRows(at: [indexPath], with: .fade)
-        usernameIndexPath = indexPath
     }
 
     private func updateGroupmatePosition(_ indexPath: IndexPath) {
