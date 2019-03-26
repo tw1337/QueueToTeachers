@@ -25,4 +25,10 @@ struct Event {
         dateFormatter.locale = Locale(identifier: "ru_RU")
         return dateFormatter.string(from: date)
     }
+    
+    func checkIfExpired(){
+        if date.isExpired {
+            NotificationCenter.default.post(name: .invalidated, object: nil)
+        }
+    }
 }

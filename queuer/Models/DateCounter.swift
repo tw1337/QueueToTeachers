@@ -22,14 +22,9 @@ class DateCounter {
         let components = calendar.dateComponents([.day, .hour, .minute, .second], from: currentDate, to: date)
         daysToNow = components
         observer?.didUpdate()
-        checkIfExpired()
+//        checkIfExpired()
     }
 
-    private func checkIfExpired() {
-        if date.isExpired {
-            NotificationCenter.default.post(name: .invalidated, object: nil)
-        }
-    }
 
     var daysToNow: DateComponents?
 
