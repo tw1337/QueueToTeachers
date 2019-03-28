@@ -1,0 +1,1 @@
+insert into users values (1, 'tw1337', 'password', 'Sergei', 'Mysianov');
