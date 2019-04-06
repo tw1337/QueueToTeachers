@@ -10,6 +10,7 @@ import com.collab.queuer.model.User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/public/users")
@@ -35,5 +36,10 @@ public class PublicUsersController {
         return authentication
                 .login(username, password)
                 .orElseThrow(() -> new RuntimeException("invalid login and/or password"));
+    }
+
+    @RequestMapping(value = "/all/", method = RequestMethod.GET)
+    public List<User> getAllUsers() {
+        return userService.findAllUsers();
     }
 }

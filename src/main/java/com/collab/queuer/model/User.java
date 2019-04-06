@@ -16,42 +16,57 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "users")
-@Value
-@Builder
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    //one day it will be login
     @Column(name = "username")
     @NotEmpty
+    @JsonProperty
     String username;
 
     //may be sha or smtng?
     @Column(name = "password")
     @NotEmpty
+    @JsonIgnore
     String password;
 
-    //dafuq
-    @Column(name = "naming")
-    @NotEmpty
-    String name;
 
-    @Column(name = "surname")
+    @Column(name = "studentname")
     @NotEmpty
-    String surname;
-    //TODO
-    // add group entity
+    @JsonProperty
+    String studentName;
 
-    public User(Long id, String username, String password, String name, String surname) {
+    @Column(name = "studentsurname")
+    @NotEmpty
+    @JsonProperty
+    String studentSurname;
+
+    @Column(name = "studentgroup")
+    @NotEmpty
+    @JsonProperty
+    String studentGroup;
+
+
+    @JsonCreator
+    public User(@JsonProperty("username") final String username,
+                @JsonProperty("password") final String password,
+                @JsonProperty("studentName") final String studentName,
+                @JsonProperty("studentSurname") final String studentSurname,
+                @JsonProperty("studentGroup") final String studentGroup) {
         super();
-        this.id = id;
         this.username = username;
         this.password = password;
-        this.name = name;
-        this.surname = surname;
+        this.studentName = studentName;
+        this.studentSurname = studentSurname;
+        this.studentGroup = studentGroup;
+    }
+
+
+    public User() {
+        super();
     }
 
     @JsonIgnore
@@ -91,6 +106,7 @@ public class User implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
         return true;
     }

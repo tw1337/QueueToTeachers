@@ -27,24 +27,21 @@ final class TokenAuthenticationService implements UserAuthenticationService {
 
     @Override
     public Optional<String> login(final String username, final String password) {
-        return users.findByLogin(username)
+        return users.findByUsername(username)
                 .filter(user -> Objects.equals(password, user.getPassword()))
                 .map(user -> tokens.expiring(ImmutableMap.of("username", username)));
     }
 
     @Override
     public Optional<User> findByToken(final String token) {
-//        return Optional
-//                .of(tokens.verify(token))
-//                .map(map -> map.get("username"))
-//                .flatMap(users::findByLogin);
-        Map<String, String> map = tokens.verify(token);
-        map.get("username");
-        return users.findByLogin(map.get("username"));
+        return Optional
+                .of(tokens.verify(token))
+                .map(map -> map.get("username"))
+                .flatMap(users::findByUsername);
     }
 
     @Override
     public void logout(final User user) {
-        // Nothing to doy
+        // Nothing to do
     }
 }

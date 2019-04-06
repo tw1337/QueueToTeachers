@@ -2,6 +2,7 @@ package com.collab.queuer.service;
 
 import com.collab.queuer.model.User;
 
+import java.util.List;
 import java.util.Optional;
 
 //мб удалю кста
@@ -12,5 +13,7 @@ public interface UserService {
     //may be refactor?
     Optional<User> find(Long id);
 
-    Optional<User> findByLogin(String login);
+    Optional<User> findByUsername(String username);
+
+    List<User> findAllUsers();
 }
