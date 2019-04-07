@@ -13,6 +13,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -34,28 +35,35 @@ public class User implements UserDetails {
     String password;
 
 
-    @Column(name = "studentname")
+    @Column(name = "student_name")
     @NotEmpty
     @JsonProperty
     String studentName;
 
-    @Column(name = "studentsurname")
+    @Column(name = "student_surname")
     @NotEmpty
     @JsonProperty
     String studentSurname;
 
-    @Column(name = "studentgroup")
+    @ManyToOne
+    @JoinColumn(name = "group_id")
     @NotEmpty
     @JsonProperty
-    String studentGroup;
+    Group studentGroup;
+
+
+
+    @OneToMany(targetEntity = Event.class, mappedBy = "eventOwner", cascade = CascadeType.ALL)
+    @JsonProperty
+    private Set<Event> events;
 
 
     @JsonCreator
     public User(@JsonProperty("username") final String username,
                 @JsonProperty("password") final String password,
-                @JsonProperty("studentName") final String studentName,
-                @JsonProperty("studentSurname") final String studentSurname,
-                @JsonProperty("studentGroup") final String studentGroup) {
+                @JsonProperty("student_name") final String studentName,
+                @JsonProperty("student_surname") final String studentSurname,
+                @JsonProperty("group_id") final Group studentGroup) {
         super();
         this.username = username;
         this.password = password;
